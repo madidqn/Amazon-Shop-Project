@@ -1,12 +1,13 @@
-.header {
-  padding: 5px 0;
-}
+/* .header {
+ 
+} */
 .searchbar {
   display: flex;
   align-items: center;
   column-gap: 4px;
   padding-left: 0.4rem;
   background-color: #121921;
+  padding: 5px 0;
 }
 .logo {
   border: 2px solid transparent;
@@ -210,4 +211,20 @@ input::placeholder {
 .bergurIcon {
   width: 40px;
   font-size: 20px;
+}
+/* style main */
+.main {
+  height: 84vh;
+  width: 98%;
+  margin: 0 auto;
+  position: relative;
+}
+.p {
+  width: 90%;
+  z-index: 1;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: blue;
 }

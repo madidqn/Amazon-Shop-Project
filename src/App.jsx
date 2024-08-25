@@ -1,13 +1,16 @@
 import { useState } from "react";
 import Select from "react-select";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
 
 //icons
 import { FaMapMarkerAlt, FaSearch, FaBars } from "react-icons/fa";
-// import { FaSearch } from "react-icons/fa";
-// import { FaBars } from "react-icons/fa";
 
 // style
 import styles from "./App.module.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/bundle";
 
 const options = [
   { value: "all", label: "All" },
@@ -79,7 +82,38 @@ function App() {
           </ul>
         </nav>
       </header>
-      <main></main>
+      <main className={styles.main}>
+        <Swiper
+          // rewind={true}
+          loop={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: true,
+          }}
+          navigation={true}
+          modules={[Autoplay, Navigation]}
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            <img src="./slide1.avif" alt="slide" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="./slide2.avif" alt="slide" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="./slide3.avif" alt="slide" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="./slide4.avif" alt="slide" />
+          </SwiperSlide>
+        </Swiper>
+        <div className={styles.p}>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor
+          sapiente eum, temporibus obcaecati optio placeat nesciunt ratione cum
+          suscipit, quos numquam, id ducimus necessitatibus culpa. Fuga odio nam
+          pariatur! Reprehenderit!
+        </div>
+      </main>
       <footer></footer>
     </>
   );
