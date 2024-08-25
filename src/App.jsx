@@ -1,12 +1,13 @@
+import { useState } from "react";
 import Select from "react-select";
 
 //icons
-import { FaMapMarkerAlt } from "react-icons/fa";
-import { FaSearch } from "react-icons/fa";
+import { FaMapMarkerAlt, FaSearch, FaBars } from "react-icons/fa";
+// import { FaSearch } from "react-icons/fa";
+// import { FaBars } from "react-icons/fa";
 
 // style
 import styles from "./App.module.css";
-import { useState } from "react";
 
 const options = [
   { value: "all", label: "All" },
@@ -24,10 +25,13 @@ function App() {
     <>
       <header className={styles.header}>
         <div className={styles.searchbar}>
-          <img src="./logo.avif" alt="logo" />
-          <div className="deliver">
+          <img src="./logo.avif" alt="logo" className={styles.logo} />
+          <div className={styles.deliver}>
             <FaMapMarkerAlt />
-            <span>Deliver to Iran</span>
+            <span>
+              <span>Deliver to </span>
+              <span> Iran</span>
+            </span>
           </div>
           <div className={styles.inputSearch}>
             <form action="">
@@ -43,8 +47,37 @@ function App() {
               </button>
             </form>
           </div>
+          <div className={styles.language}>
+            <img src="./language.avif" alt="language" />
+            <span>EN</span>
+          </div>
+          <div className={styles.signIn}>
+            <span>Hello, sign in</span>
+            <span>Account & Lists</span>
+          </div>
+          <div className={styles.signIn}>
+            <span>Returns</span>
+            <span>& Orders</span>
+          </div>
+          <div className={styles.cart}>
+            <span>0</span>
+            <img src="./cart.avif" alt="cart" />
+            <span>Cart</span>
+          </div>
         </div>
-        <nav></nav>
+        <nav className={styles.menu}>
+          <ul>
+            <li>
+              <FaBars className={styles.bergurIcon} />
+              <span>All</span>
+            </li>
+            <li>Today's Deals</li>
+            <li>Customer Service</li>
+            <li>Registry</li>
+            <li>Gift Cards</li>
+            <li>Sell</li>
+          </ul>
+        </nav>
       </header>
       <main></main>
       <footer></footer>
