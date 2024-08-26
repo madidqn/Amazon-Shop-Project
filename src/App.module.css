@@ -335,8 +335,6 @@ input::placeholder {
   display: block;
 }
 .footer a:hover {
-  /* filter: brightness(30%); */
-  /* filter:  */
   background-color: #95a1ad8f;
 }
 .lists {

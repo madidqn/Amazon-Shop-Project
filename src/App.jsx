@@ -164,7 +164,7 @@ function App() {
               <a href="#">see more...</a>
             </div>
             <div className={styles.product}>
-              <img src="./ski-stick.webp" />
+              <img src="./ski.png" />
               <h2>Ski Stick</h2>
               <div className={styles.price}>
                 <span>$</span>
