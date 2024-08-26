@@ -11,9 +11,9 @@
   list-style: none;
   text-decoration: none;
 }
-body {
-  background-color: #e2e6e7;
-}
+/* body {
+ 
+} */
 .swiper {
   height: 100%;
 }
@@ -22,7 +22,7 @@ body {
   color: black;
   width: 60px;
   border: 2px solid black;
-  height: 200px;
+  height: 220px;
   border-radius: 10px;
   position: absolute;
   top: 4%;
@@ -31,7 +31,4 @@ body {
 .swiper-button-next::after {
   font-size: 2.5rem;
   font-weight: 900;
-}
-.swiper-button-next::after:active {
-  background-color: red;
 }
