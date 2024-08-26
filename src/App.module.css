@@ -6,7 +6,6 @@
 .slider {
   height: 100%;
   margin: 0 auto;
-  /* position: relative; */
 }
 .mySwiper img {
   object-fit: cover;
@@ -107,77 +106,4 @@
 }
 .product a:hover {
   color: red;
-}
-.footer {
-  width: 100%;
-  background-color: #232f3f;
-}
-.footer a {
-  background-color: #3a4352;
-  color: white;
-  text-align: center;
-  padding: 12px 0;
-  width: 100%;
-  display: block;
-}
-.footer a:hover {
-  background-color: #95a1ad8f;
-}
-.lists {
-  width: 70%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  padding: 1.8rem 0;
-}
-.lists ul {
-  display: flex;
-  flex-direction: column;
-  row-gap: 12px;
-}
-.lists ul li {
-  font-size: 14px;
-  color: #9faab8;
-}
-.lists ul li:not(:first-child):hover {
-  text-decoration: underline;
-  color: #9faab8;
-  cursor: pointer;
-}
-.lists ul li:first-child {
-  font-size: 1rem;
-  color: white;
-}
-.footerLogo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  column-gap: 1.4rem;
-  color: #9faab8;
-  border-top: 1px solid #9faab8;
-  padding: 1.4rem 0;
-}
-.footerLogo > img {
-  cursor: pointer;
-  width: 100px;
-}
-.footerLogo > p {
-  padding: 10px 5px;
-  border: 1px solid #9faab8;
-  cursor: pointer;
-  border-radius: 4px;
-}
-.footerLogo > p:nth-child(2) {
-  display: flex;
-  align-items: center;
-  column-gap: 5px;
-}
-.footerLogo > p:last-child {
-  display: flex;
-  align-items: center;
-  column-gap: 5px;
-}
-.footerLogo > p > img {
-  width: 20px;
-  height: 20px;
 }
