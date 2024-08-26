@@ -11,9 +11,9 @@
   list-style: none;
   text-decoration: none;
 }
-/* body {
- 
-} */
+body {
+  background-color: #e2e6e7;
+}
 .swiper {
   height: 100%;
 }
