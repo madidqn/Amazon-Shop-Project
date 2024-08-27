@@ -1,17 +1,21 @@
-import styles from "./style.module.css";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+//component
 import Product from "../product";
+import { getProducts } from "../../store/productsSlice";
+
+//style
+import styles from "./style.module.css";
 
 function Products() {
-  const [products, setProducts] = useState([]);
-  async function getData() {
-    const res = await fetch("http://localhost:3000/products");
-    const data = await res.json();
-    setProducts(data);
-  }
+  const { products } = useSelector((state) => state.products);
+
+  const dispatch = useDispatch();
   useEffect(() => {
-    getData();
+    dispatch(getProducts());
   }, []);
+
   return (
     <div className={styles.products}>
       <p>
