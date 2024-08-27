@@ -1,6 +1,6 @@
-import Products from "../components/products";
-import Slider from "../components/slider";
 import Main from "./../components/main";
+import Slider from "../components/slider";
+import Products from "../components/products";
 
 function Home() {
   return (

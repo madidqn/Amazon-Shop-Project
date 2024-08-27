@@ -44,24 +44,24 @@
   display: block;
   margin-top: 5px;
 }
-.price {
+.finalPrice {
   display: flex;
   column-gap: 4px;
   align-items: center;
 }
-.price span:first-child {
+.finalPrice span:first-child {
   font-size: 15px;
   font-weight: 300;
 }
-.price span:nth-child(2) {
+.finalPrice span:nth-child(2) {
   font-weight: 500;
   font-size: 1.6rem;
 }
-.price span:last-child {
+.finalPrice span:last-child {
   font-size: 14px;
   font-weight: 500;
 }
-.discount {
+.price {
   text-decoration: line-through;
   font-size: 14px;
   font-weight: 400;

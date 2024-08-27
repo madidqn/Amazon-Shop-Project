@@ -1,0 +1,82 @@
+{
+  "products": [
+    {
+      "id": 0,
+      "src": "./shirt.webp",
+      "alt": "shirt",
+      "title": "Shirt",
+      "price": 99000,
+      "final_price": 90000,
+      "discription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident a aperiam quo unde aspernatur culpa nobis eaque sit corporis laborum, est veniam assumenda impedit id, tempora corrupti quia maiores distinctio!",
+      "rating": [
+        "./star.avif",
+        "./star.avif",
+        "./star.avif",
+        "./star.avif",
+        "./star.avif"
+      ],
+      "voted_number": "1,725"
+    },
+    {
+      "id": 1,
+      "src": "./laptop.avif",
+      "alt": "laptop",
+      "title": "Laptop",
+      "price": 128000,
+      "final_price": 120000,
+      "discription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident a aperiam quo unde aspernatur culpa nobis eaque sit corporis laborum, est veniam assumenda impedit id, tempora corrupti quia maiores distinctio!",
+      "rating": ["./star.avif", "./star.avif", "./star.avif"],
+      "voted_number": "1,000"
+    },
+    {
+      "id": 2,
+      "src": "./headset.jpg",
+      "alt": "headset",
+      "title": "Headset",
+      "price": 1000,
+      "final_price": 950,
+      "discription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident a aperiam quo unde aspernatur culpa nobis eaque sit corporis laborum, est veniam assumenda impedit id, tempora corrupti quia maiores distinctio!",
+      "rating": ["./star.avif"],
+      "voted_number": "97"
+    },
+    {
+      "id": 3,
+      "src": "./backpack.jpg",
+      "alt": "backpack",
+      "title": "Backpack",
+      "price": 1540,
+      "final_price": 1450,
+      "discription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident a aperiam quo unde aspernatur culpa nobis eaque sit corporis laborum, est veniam assumenda impedit id, tempora corrupti quia maiores distinctio!",
+      "rating": ["./star.avif", "./star.avif", "./star.avif", "./star.avif"],
+      "voted_number": "301"
+    },
+    {
+      "id": 4,
+      "src": "./mobile.avif",
+      "alt": "mobile",
+      "title": "Mobile",
+      "price": 136000,
+      "final_price": 125000,
+      "discription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident a aperiam quo unde aspernatur culpa nobis eaque sit corporis laborum, est veniam assumenda impedit id, tempora corrupti quia maiores distinctio!",
+      "rating": [
+        "./star.avif",
+        "./star.avif",
+        "./star.avif",
+        "./star.avif",
+        "./star.avif"
+      ],
+      "voted_number": "2,201"
+    },
+    {
+      "id": 5,
+      "src": "./ski.png",
+      "alt": "ski",
+      "title": "Ski Stick",
+      "price": 6000,
+      "final_price": 5000,
+      "discription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident a aperiam quo unde aspernatur culpa nobis eaque sit corporis laborum, est veniam assumenda impedit id, tempora corrupti quia maiores distinctio!",
+      "rating": ["./star.avif", "./star.avif"],
+      "voted_number": "245"
+    }
+  ]
+}
