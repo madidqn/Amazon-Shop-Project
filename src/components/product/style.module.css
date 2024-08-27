@@ -3,6 +3,7 @@
   padding: 15px;
   display: flex;
   flex-direction: column;
+  color: black;
 }
 .product img {
   width: 200px;
@@ -65,11 +66,11 @@
   font-weight: 300;
   padding-left: 5px;
 }
-.product a {
+.seeMore {
   padding-top: 15px;
   font-size: 1rem;
   color: black;
 }
-.product a:hover {
+.seeMore:hover {
   color: red;
 }
