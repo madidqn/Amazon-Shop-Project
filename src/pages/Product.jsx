@@ -28,34 +28,49 @@ function Product() {
           <section className={styles.aboutProduct}>
             <div>
               <h2>{filterProducts[0].title}</h2>
-              <p>{filterProducts[0].discription}</p>
-              <a href="#">Visit the acer Store</a>
-              <div>
+              <p className={styles.discription}>
+                {filterProducts[0].discription}
+              </p>
+              <a href="#" className={styles.visit}>
+                Visit the acer Store
+              </a>
+              <div className={styles.rating}>
                 <span>4.3</span>
                 {filterProducts[0].rating.map((element, index) => (
                   <img src={element} alt="star" key={index} />
                 ))}
-                <a href="#">{filterProducts[0].voted_number} ranting </a>
-                <a href="#">Search this page</a>
+                <a href="#" className={styles.voted}>
+                  {filterProducts[0].voted_number} ranting
+                </a>
+                <a href="#" className={styles.searchPage}>
+                  Search this page
+                </a>
               </div>
-              <p>6K+ bought in past month</p>
+              <p className={styles.bought}>6K+ bought in past month</p>
             </div>
             <div>
-              <div>
+              <div className={styles.price}>
                 <span>-7%</span>
-                <span>$</span>
-                <span>{filterProducts[0].final_price}</span>
-                <span>99</span>
+                <div>
+                  <span>$</span>
+                  <span>{filterProducts[0].final_price}</span>
+                  <span>99</span>
+                </div>
               </div>
-              <span>List Price: $321.99</span>
-              <p>$91.31 Shipping & Import Fees Deposit to Iran Details</p>
+              <span>
+                List Price: <span>$321.99</span>
+              </span>
               <p>
-                Available at a lower price from other sellers that may not offer
-                free Prime shipping.
+                $91.31 Shipping & Import Fees Deposit to Iran{" "}
+                <a href="#">Details</a>
               </p>
               <p>
-                Extra Savings Amazon Music offer with this purchase 1 Applicable
-                Promotion
+                Available at a lower price from <a href="#"> other sellers </a>
+                that may not offer free Prime shipping.
+              </p>
+              <p>
+                <span>Extra Savings</span> Amazon Music offer with this purchase
+                1 Applicable Promotion
               </p>
             </div>
             <div>
