@@ -14,7 +14,6 @@ function Product({ index }) {
   useEffect(() => {
     dispatch(getProducts());
   }, []);
-
   return (
     <Link className={styles.product} to={`/product/${products[index].id}`}>
       <img src={products[index].src} alt={products[index].alt} />

@@ -1,4 +1,5 @@
 .main {
+  min-height: 90vh;
   padding: 0 13px;
   margin: 0 auto;
 }
