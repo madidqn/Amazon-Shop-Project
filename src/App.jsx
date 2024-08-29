@@ -5,6 +5,7 @@ import Header from "./components/header";
 import Home from "./pages/Home";
 import Footer from "./components/footer";
 import Product from "./pages/Product";
+import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
 
 function App() {
@@ -14,10 +15,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product?/:id" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {/* mahsol taki */}
-      {/* sabad kharid */}
       {/* sign in??? */}
       <Footer />
     </>

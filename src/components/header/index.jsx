@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Select from "react-select";
+import { Link } from "react-router-dom";
 
 //style
 import styles from "./style.module.css";
@@ -52,11 +53,11 @@ function Header() {
           <span>Returns</span>
           <span>& Orders</span>
         </div>
-        <div className={styles.cart}>
+        <Link className={styles.cart} to={"/cart"}>
           <span>0</span>
           <img src="./cart.avif" alt="cart" />
           <span>Cart</span>
-        </div>
+        </Link>
       </div>
       <nav className={styles.menu}>
         <ul>
