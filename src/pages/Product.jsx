@@ -9,6 +9,7 @@ import styles from "./Product.module.css";
 
 //icon
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { BiMessageDetail } from "react-icons/bi";
 
 function Product() {
   const { id } = useParams();
@@ -74,36 +75,60 @@ function Product() {
               </p>
             </div>
             <div>
-              <span>Style: R3 7320U</span>
-              <div>
-                <span>R3 7320U $299.99</span>
-                <span>R7 5700U $499.99</span>
+              <span>
+                Style: <span>R3 7320U</span>
+              </span>
+              <div className={styles.R3}>
+                <div>
+                  <span>R3 7320U</span>
+                  <span>$299.99</span>
+                </div>
+                <div>
+                  <span>R7 5700U</span>
+                  <span>$499.99</span>
+                </div>
               </div>
               <div className={styles.lists}>
-                <ul>
-                  <li>Brand</li>
-                  <li>Model Name</li>
-                  <li>Screen Size</li>
-                  <li>Color</li>
-                  <li>Hard Disk Size</li>
-                  <li>CPU Model</li>
-                  <li>Ram Memory Installed Size</li>
-                  <li>Operating System</li>
-                  <li>Special Feature</li>
-                  <li>Graphics Card Description</li>
-                </ul>
-                <ul>
-                  <li>acer</li>
-                  <li>Laptop</li>
-                  <li>15.6 Inches</li>
-                  <li>Silver</li>
-                  <li>128 GB</li>
-                  <li>Ryzen 3</li>
-                  <li>8 GB</li>
-                  <li>Windows 11 S</li>
-                  <li>Backlit Keyboard</li>
-                  <li>Integrated</li>
-                </ul>
+                <div>
+                  <span>Brand</span>
+                  <span>acer</span>
+                </div>
+                <div>
+                  <span>Model Name</span>
+                  <span>Laptop</span>
+                </div>
+                <div>
+                  <span>Screen Size</span>
+                  <span>15.6 Inches</span>
+                </div>
+                <div>
+                  <span>Color</span>
+                  <span>Silver</span>
+                </div>
+                <div>
+                  <span>Hard Disk Size</span>
+                  <span>128 GB</span>
+                </div>
+                <div>
+                  <span>CPU Model</span>
+                  <span>Ryzen 3</span>
+                </div>
+                <div>
+                  <span>Ram Memory Installed Size</span>
+                  <span>8 GB</span>
+                </div>
+                <div>
+                  <span>Operating System</span>
+                  <span>Windows 11 S</span>
+                </div>
+                <div>
+                  <span>Special Feature</span>
+                  <span>Backlit Keyboard</span>
+                </div>
+                <div>
+                  <span>Graphics Card Description</span>
+                  <span>Integrated</span>
+                </div>
               </div>
               <span>Show more</span>
             </div>
@@ -160,12 +185,15 @@ function Product() {
                 <li>Keyboard backlight not present on this model</li>
               </ul>
               <span>Show more</span>
-              <p>dot icon Report an issue with this product or seller</p>
-              <p>
-                Note: Products with electrical plugs are designed for use in the
-                US. Outlets and voltage differ internationally and this product
-                may require an adapter or converter for use in your destination.
-                Please check compatibility before purchasing.
+              <div className={styles.report}>
+                <BiMessageDetail className={styles.iconMessage} />
+                <p>Report an issue with this product or seller</p>
+              </div>
+              <p className={styles.note}>
+                <span>Note:</span> Products with electrical plugs are designed
+                for use in the US. Outlets and voltage differ internationally
+                and this product may require an adapter or converter for use in
+                your destination. Please check compatibility before purchasing.
               </p>
             </div>
           </section>

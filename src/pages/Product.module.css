@@ -132,7 +132,9 @@
 .aboutProduct > div:nth-child(2) > p > span {
   color: white;
   background-color: #edb155;
-  padding: 5px 2px;
+  padding: 3px 2px;
+  cursor: pointer;
+  border-radius: 4px;
 }
 .aboutProduct > div:nth-child(2) > p:last-child {
   padding-bottom: 5px;
@@ -140,6 +142,103 @@
 .aboutProduct > div:nth-child(2) > p:not(:last-child) {
   padding-bottom: 0.7rem;
 }
+.aboutProduct > div:nth-child(3) > span {
+  font-weight: normal;
+  font-size: 0.9rem;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+.aboutProduct > div:nth-child(3) > span > span {
+  font-weight: 700;
+}
+.R3 {
+  display: flex;
+  align-items: center;
+  column-gap: 7px;
+  padding-bottom: 15px;
+}
+.R3 > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 5px;
+  border: 1px solid #edb155;
+  border-radius: 2px;
+  padding: 5px 6px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+.R3 > div > span:last-child {
+  color: #c25253;
+  font-size: 13px;
+}
 .lists {
   display: flex;
+  flex-direction: column;
+  row-gap: 13px;
+  padding-bottom: 5px;
+}
+.lists > div {
+  display: flex;
+  column-gap: 10px;
+}
+.lists > div > span:first-child {
+  font-weight: 600;
+  font-size: 14px;
+  width: 200px;
+}
+.lists > div > span:last-child {
+  font-size: 14px;
+  row-gap: 10px;
+}
+.aboutProduct > div:nth-child(4) > h3 {
+  font-size: 17px;
+  padding-bottom: 1rem;
+  padding-top: 11px;
+}
+.aboutProduct > div:nth-child(4) > ul {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+.aboutProduct > div:nth-child(4) > ul > li {
+  list-style: disc;
+  list-style-position: outside;
+  padding-left: 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.aboutProduct > div:nth-child(4) > span {
+  font-size: 13px;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+.report {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  padding-bottom: 5px;
+}
+.iconMessage {
+  color: #989a99;
+  font-size: 1.5rem;
+}
+.report > p {
+  font-size: 14px;
+  color: #40beb2;
+}
+.report > p:hover {
+  color: red;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.note {
+  font-size: 14px;
+  line-height: 24px;
+  color: #a1a1a1;
+}
+.note > span {
+  font-weight: 500;
+  color: black;
 }
