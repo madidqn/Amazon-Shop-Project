@@ -198,19 +198,15 @@ function Product() {
             </div>
           </section>
           <section>
-            <div>
-              <p>
-                <h5>Buy new:</h5>
-                <i>dot icon</i>
-              </p>
-              <div>
+            <div className={styles.buy}>
+              <h5>Buy new :</h5>
+              <div className={styles.buyPrice}>
                 <span>$</span>
                 <span>{filterProducts[0].final_price}</span>
                 <span>99</span>
               </div>
-              <p>
-                $91.31 Shipping & Import Fees Deposit to Iran Details Delivery
-              </p>
+              <p>$91.31 Shipping & Import Fees</p>
+              <p> Deposit to Iran Details Delivery</p>
               <span> Wednesday, May 15</span>
               <div className={styles.deliver}>
                 <FaMapMarkerAlt />
@@ -224,24 +220,30 @@ function Product() {
                 <option value="">hello</option>
               </select>
               <button>Add to cart</button>
-              <div className={styles.lists}>
-                <ul>
-                  <li>Ships from</li>
-                  <li>Sold by</li>
-                  <li>Returns</li>
-                  <li>Payments</li>
-                </ul>
-                <ul>
-                  <li>Amazon.com</li>
-                  <li>Amazon.com</li>
-                  <li>
+              <div className={styles.buyLists}>
+                <div>
+                  <span>Ships from</span>
+                  <span>Amazon.com</span>
+                </div>
+                <div>
+                  <span>Sold by</span>
+                  <span>Amazon.com</span>
+                </div>
+                <div>
+                  <span>Returns</span>
+                  <span className={styles.return}>
                     Eligible for Return, Refund or Replacement within 30 days of
                     receipt
-                  </li>
-                  <li>Secure transaction</li>
-                </ul>
+                  </span>
+                </div>
+                <div>
+                  <span>Payments</span>
+                  <span className={styles.return}>Secure transaction</span>
+                </div>
               </div>
-              <a href="#">see more...</a>
+              <a href="#" className={styles.return}>
+                see more...
+              </a>
             </div>
           </section>
         </div>
