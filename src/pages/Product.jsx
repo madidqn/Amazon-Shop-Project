@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-
+import Select from "react-select";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -28,13 +28,24 @@ function Product() {
   function fixStyle(content) {
     setStyle(content);
   }
-  useEffect(() => {
-    !style ? setStyle(text1.current?.innerText) : null;
-  }, [style]);
 
   const [showList, setShowList] = useState(false);
   const [showParagraph, setShowParagraph] = useState(false);
   const [showSupport, setShowSupport] = useState(false);
+
+  const values = [];
+  function fixOptions() {
+    for (let i = 1; i <= 27; i++) {
+      values.push({ id: i - 1, value: i, label: `Quntity: ${i}` });
+    }
+    return values;
+  }
+  const options = Array.from(fixOptions());
+  const [selectedOption, setSelectedOption] = useState(values[0].label);
+
+  useEffect(() => {
+    !style ? setStyle(text1.current.innerText) : null;
+  }, [style]);
 
   return (
     <Main>
@@ -273,13 +284,21 @@ function Product() {
                 <span>Deliver to Iran</span>
               </div>
               <h4>In Stock</h4>
-              <select name="" id="">
-                <option value="">hello</option>
-                <option value="">hello</option>
-                <option value="">hello</option>
-                <option value="">hello</option>
+              <select
+                name="quntity"
+                id="quntity"
+                onChange={(e) => setSelectedOption(e.target.value)}
+                value={selectedOption}
+              >
+                {options.map((option) => (
+                  <option value={option.value} key={option.id}>
+                    {option.label}
+                  </option>
+                ))}
               </select>
-              <button onClick={() => dispatch(increment())}>Add to cart</button>
+              <button onClick={() => dispatch(increment())}>
+                {selectedOption}
+              </button>
               <div
                 className={`${styles.buyLists} ${
                   showSupport ? styles.seeMoreBuy : styles.showLessBuy
@@ -315,7 +334,7 @@ function Product() {
                 className={styles.seeReturn}
                 onClick={() => setShowSupport((state) => !state)}
               >
-                {showSupport ? "See more" : "Show less"}
+                {showSupport ? "Show less" : "See more"}
               </span>
             </div>
           </section>
