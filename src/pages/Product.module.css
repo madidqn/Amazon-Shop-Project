@@ -158,27 +158,43 @@
   column-gap: 7px;
   padding-bottom: 15px;
 }
-.R3 > div {
+.R3 > button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: transparent;
   row-gap: 5px;
-  border: 1px solid #edb155;
   border-radius: 2px;
-  padding: 5px 6px;
+  padding: 5px 10px;
   font-weight: 700;
   font-size: 14px;
   cursor: pointer;
 }
-.R3 > div > span:last-child {
+.R3 > button > span:first-child {
+  font-weight: 600;
+}
+.R3 > button > span:last-child {
   color: #c25253;
   font-size: 13px;
+}
+.selectedStyle {
+  border: 1px solid #edb155;
+}
+.notSelectedStyle {
+  border: 1px solid black;
 }
 .lists {
   display: flex;
   flex-direction: column;
   row-gap: 13px;
   padding-bottom: 5px;
+}
+.seeMore {
+  height: auto;
+}
+.showLess {
+  height: 250px;
+  overflow: hidden;
 }
 .lists > div {
   display: flex;
@@ -193,6 +209,24 @@
   font-size: 14px;
   row-gap: 10px;
 }
+.show {
+  display: flex;
+  align-items: center;
+}
+.iconShow {
+  padding-top: 10px;
+  font-size: 1.5rem;
+}
+.show span {
+  padding-top: 5px;
+  display: inline-block;
+  color: #40beb2;
+  font-size: 13px;
+}
+.show span:hover {
+  color: red;
+  cursor: pointer;
+}
 .aboutProduct > div:nth-child(4) > h3 {
   font-size: 17px;
   padding-bottom: 1rem;
@@ -205,21 +239,23 @@
 }
 .aboutProduct > div:nth-child(4) > ul > li {
   list-style: disc;
-  list-style-position: outside;
-  padding-left: 5px;
+  list-style-position: inside;
   font-size: 14px;
   font-weight: 500;
 }
-.aboutProduct > div:nth-child(4) > span {
-  font-size: 13px;
-  padding-bottom: 10px;
-  display: inline-block;
+.showLessParagraph {
+  height: 400px;
+  overflow: hidden;
+}
+.seeMoreParagraph {
+  height: auto;
 }
 .report {
   display: flex;
   align-items: center;
   column-gap: 5px;
   padding-bottom: 5px;
+  padding-top: 10px;
 }
 .iconMessage {
   color: #989a99;
@@ -293,14 +329,14 @@
   color: #969696;
   padding-bottom: 10px;
 }
-.buy > span {
+/* .buy > span {
   font-size: 16px;
   font-weight: 500;
   display: inline-block;
   padding-bottom: 1rem;
-}
+} */
 .deliver {
-  padding-bottom: 1rem;
+  padding: 1rem 0;
   font-size: 13px;
   display: flex;
   align-items: center;
@@ -308,6 +344,8 @@
 }
 .deliver span {
   color: #40beb2;
+  font-size: 16px;
+  font-weight: 500;
 }
 .deliver span:hover {
   color: red;
@@ -354,6 +392,13 @@
   flex-direction: column;
   row-gap: 8px;
 }
+.showLessBuy {
+  height: auto;
+}
+.seeMoreBuy {
+  height: 200px;
+  overflow: hidden;
+}
 .buyLists > div {
   display: flex;
   align-items: center;
@@ -371,6 +416,14 @@
   color: #40beb2;
 }
 .return:hover {
+  color: red;
+  cursor: pointer;
+}
+.seeReturn {
+  font-size: 11px;
+  color: #40beb2;
+}
+.seeReturn:hover {
   color: red;
   cursor: pointer;
 }

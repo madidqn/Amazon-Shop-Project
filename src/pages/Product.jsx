@@ -1,8 +1,11 @@
+import { useState, useRef, useEffect } from "react";
+
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 // component
 import Main from "../components/main";
+import { increment } from "../store/cartSlice";
 
 // style
 import styles from "./Product.module.css";
@@ -10,13 +13,28 @@ import styles from "./Product.module.css";
 //icon
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { BiMessageDetail } from "react-icons/bi";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 function Product() {
+  const dispatch = useDispatch();
+
   const { id } = useParams();
-  console.log(id);
   const { products } = useSelector((state) => state.products);
   const filterProducts = products.filter((product) => product.id === id);
-  console.log(filterProducts);
+
+  const text1 = useRef(true);
+  const text2 = useRef(true);
+  const [style, setStyle] = useState("");
+  function fixStyle(content) {
+    setStyle(content);
+  }
+  useEffect(() => {
+    !style ? setStyle(text1.current?.innerText) : null;
+  }, [style]);
+
+  const [showList, setShowList] = useState(false);
+  const [showParagraph, setShowParagraph] = useState(false);
+  const [showSupport, setShowSupport] = useState(false);
 
   return (
     <Main>
@@ -62,7 +80,7 @@ function Product() {
                 List Price: <span>$321.99</span>
               </span>
               <p>
-                $91.31 Shipping & Import Fees Deposit to Iran{" "}
+                $91.31 Shipping & Import Fees Deposit to Iran
                 <a href="#">Details</a>
               </p>
               <p>
@@ -76,19 +94,37 @@ function Product() {
             </div>
             <div>
               <span>
-                Style: <span>R3 7320U</span>
+                Style: <span>{style}</span>
               </span>
               <div className={styles.R3}>
-                <div>
-                  <span>R3 7320U</span>
+                <button
+                  onClick={() => fixStyle(text1.current.innerText)}
+                  className={
+                    style === text1.current.innerText
+                      ? styles.selectedStyle
+                      : styles.notSelectedStyle
+                  }
+                >
+                  <span ref={text1}>R3 7320U</span>
                   <span>$299.99</span>
-                </div>
-                <div>
-                  <span>R7 5700U</span>
+                </button>
+                <button
+                  onClick={() => fixStyle(text2.current.innerText)}
+                  className={
+                    style === text2.current.innerText
+                      ? styles.selectedStyle
+                      : styles.notSelectedStyle
+                  }
+                >
+                  <span ref={text2}>R7 5700U</span>
                   <span>$499.99</span>
-                </div>
+                </button>
               </div>
-              <div className={styles.lists}>
+              <div
+                className={`${styles.lists}  ${
+                  showList ? styles.seeMore : styles.showLess
+                } `}
+              >
                 <div>
                   <span>Brand</span>
                   <span>acer</span>
@@ -130,11 +166,26 @@ function Product() {
                   <span>Integrated</span>
                 </div>
               </div>
-              <span>Show more</span>
+              <div className={styles.show}>
+                {showList ? (
+                  <IoIosArrowUp className={styles.iconShow} />
+                ) : (
+                  <IoIosArrowDown className={styles.iconShow} />
+                )}
+                <span onClick={() => setShowList((state) => !state)}>
+                  {showList ? "Show less" : "See more"}
+                </span>
+              </div>
             </div>
             <div>
               <h3>About this item</h3>
-              <ul>
+              <ul
+                className={` ${
+                  showParagraph
+                    ? styles.seeMoreParagraph
+                    : styles.showLessParagraph
+                } `}
+              >
                 <li>
                   Purposeful Design: Travel with ease and look great doing it
                   with the Aspire's 3 thin, light design.
@@ -184,7 +235,16 @@ function Product() {
                 </li>
                 <li>Keyboard backlight not present on this model</li>
               </ul>
-              <span>Show more</span>
+              <div className={styles.show}>
+                {showParagraph ? (
+                  <IoIosArrowUp className={styles.iconShow} />
+                ) : (
+                  <IoIosArrowDown className={styles.iconShow} />
+                )}
+                <span onClick={() => setShowParagraph((state) => !state)}>
+                  {showParagraph ? "Show less" : "See more"}
+                </span>
+              </div>
               <div className={styles.report}>
                 <BiMessageDetail className={styles.iconMessage} />
                 <p>Report an issue with this product or seller</p>
@@ -219,8 +279,12 @@ function Product() {
                 <option value="">hello</option>
                 <option value="">hello</option>
               </select>
-              <button>Add to cart</button>
-              <div className={styles.buyLists}>
+              <button onClick={() => dispatch(increment())}>Add to cart</button>
+              <div
+                className={`${styles.buyLists} ${
+                  showSupport ? styles.seeMoreBuy : styles.showLessBuy
+                }`}
+              >
                 <div>
                   <span>Ships from</span>
                   <span>Amazon.com</span>
@@ -240,10 +304,19 @@ function Product() {
                   <span>Payments</span>
                   <span className={styles.return}>Secure transaction</span>
                 </div>
+                <div>
+                  <span>Support</span>
+                  <span className={styles.return}>
+                    Product support included
+                  </span>
+                </div>
               </div>
-              <a href="#" className={styles.return}>
-                see more...
-              </a>
+              <span
+                className={styles.seeReturn}
+                onClick={() => setShowSupport((state) => !state)}
+              >
+                {showSupport ? "See more" : "Show less"}
+              </span>
             </div>
           </section>
         </div>

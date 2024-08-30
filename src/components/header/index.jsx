@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Select from "react-select";
 import { Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 //style
 import styles from "./style.module.css";
 
@@ -9,6 +9,7 @@ import styles from "./style.module.css";
 import { FaMapMarkerAlt, FaSearch, FaBars } from "react-icons/fa";
 
 function Header() {
+  const { value } = useSelector((state) => state.cart);
   const [selectedOption, setSelectedOption] = useState(null);
   const options = [
     { value: "all", label: "All" },
@@ -54,7 +55,7 @@ function Header() {
           <span>& Orders</span>
         </div>
         <Link className={styles.cart} to={"/cart"}>
-          <span>0</span>
+          <span>{value}</span>
           <img src="./cart.avif" alt="cart" />
           <span>Cart</span>
         </Link>
