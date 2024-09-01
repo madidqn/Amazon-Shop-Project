@@ -1,11 +1,10 @@
 import { useState, useRef, useEffect } from "react";
-import Select from "react-select";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 // component
 import Main from "../components/main";
-import { increment } from "../store/cartSlice";
+import { actions } from "./../store/productsSlice";
 
 // style
 import styles from "./Product.module.css";
@@ -28,24 +27,23 @@ function Product() {
   function fixStyle(content) {
     setStyle(content);
   }
+  useEffect(() => {
+    !style ? setStyle(text1.current.innerText) : null;
+  }, [style]);
 
   const [showList, setShowList] = useState(false);
   const [showParagraph, setShowParagraph] = useState(false);
   const [showSupport, setShowSupport] = useState(false);
 
-  const values = [];
+  const [selectedOption, setSelectedOption] = useState();
   function fixOptions() {
-    for (let i = 1; i <= 27; i++) {
-      values.push({ id: i - 1, value: i, label: `Quntity: ${i}` });
+    let values = [];
+    for (let i = 1; i <= filterProducts[0].quantity; i++) {
+      values.push({ id: i - 1, value: i, label: `Quantity: ${i}` });
     }
     return values;
   }
-  const options = Array.from(fixOptions());
-  const [selectedOption, setSelectedOption] = useState(values[0].label);
-
-  useEffect(() => {
-    !style ? setStyle(text1.current.innerText) : null;
-  }, [style]);
+  const options = fixOptions();
 
   return (
     <Main>
@@ -53,24 +51,24 @@ function Product() {
         <img src="/car.avif" alt="car" />
         <div>
           <section>
-            <img src={filterProducts[0].src} alt={filterProducts[0].alt} />
+            <img src={filterProducts[0]?.src} alt={filterProducts[0]?.alt} />
           </section>
           <section className={styles.aboutProduct}>
             <div>
-              <h2>{filterProducts[0].title}</h2>
+              <h2>{filterProducts[0]?.title}</h2>
               <p className={styles.discription}>
-                {filterProducts[0].discription}
+                {filterProducts[0]?.discription}
               </p>
               <a href="#" className={styles.visit}>
                 Visit the acer Store
               </a>
               <div className={styles.rating}>
                 <span>4.3</span>
-                {filterProducts[0].rating.map((element, index) => (
+                {filterProducts[0]?.rating.map((element, index) => (
                   <img src={element} alt="star" key={index} />
                 ))}
                 <a href="#" className={styles.voted}>
-                  {filterProducts[0].voted_number} ranting
+                  {filterProducts[0]?.voted_number} ranting
                 </a>
                 <a href="#" className={styles.searchPage}>
                   Search this page
@@ -273,7 +271,7 @@ function Product() {
               <h5>Buy new :</h5>
               <div className={styles.buyPrice}>
                 <span>$</span>
-                <span>{filterProducts[0].final_price}</span>
+                <span>{filterProducts[0]?.final_price}</span>
                 <span>99</span>
               </div>
               <p>$91.31 Shipping & Import Fees</p>
@@ -285,8 +283,6 @@ function Product() {
               </div>
               <h4>In Stock</h4>
               <select
-                name="quntity"
-                id="quntity"
                 onChange={(e) => setSelectedOption(e.target.value)}
                 value={selectedOption}
               >
@@ -296,8 +292,10 @@ function Product() {
                   </option>
                 ))}
               </select>
-              <button onClick={() => dispatch(increment())}>
-                {selectedOption}
+              <button
+                onClick={() => dispatch(actions.getId(filterProducts[0]?.id))}
+              >
+                Add to cart
               </button>
               <div
                 className={`${styles.buyLists} ${

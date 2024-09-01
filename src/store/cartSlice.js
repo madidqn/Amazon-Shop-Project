@@ -2,18 +2,20 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: 6,
+  id: null,
 };
-
+// const getId = (state, action) => {
+//   console.log(Number(state.value + action.payload));
+// };
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    increment: (state) => {
-      console.log("slaam");
-      state.value += 1;
+    getId: (state, action) => {
+      console.log(Number(state.value + action.payload));
     },
   },
 });
 
-export const { increment } = cartSlice.actions;
+export const actions = cartSlice.actions;
 export default cartSlice.reducer;

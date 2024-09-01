@@ -9,7 +9,7 @@ import styles from "./style.module.css";
 import { FaMapMarkerAlt, FaSearch, FaBars } from "react-icons/fa";
 
 function Header() {
-  const { value } = useSelector((state) => state.cart);
+  const { value } = useSelector((state) => state.products);
   const [selectedOption, setSelectedOption] = useState(null);
   const options = [
     { value: "all", label: "All" },
