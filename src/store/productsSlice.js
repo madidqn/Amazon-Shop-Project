@@ -1,32 +1,36 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { produce } from "immer";
 
 const initialState = {
   products: [],
-  value: 6,
-  getId: null,
+  cart: [],
+  selectedOption: 1,
 };
 
 export const getProducts = createAsyncThunk("api/products", async () => {
   const data = await axios("http://localhost:3000/products");
   return data?.data;
 });
-
-// const getId = (state, action) => {
-//   const filterProducts = state.products.filter(
-//     (product) => product.id === action.payload
-//   );
-//   console.log(Number(state.value + action.payload));
-//   console.log(typeof filterProducts);
-// };
 export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    getId: (state, action) => {
-      const ff = Number(state.value) + Number(action.payload);
-      console.log(ff);
+    addToCart: (state, action) => {
+      if (!state.cart.some((product) => product.id === action.payload)) {
+        const filterProduct = state.products.find((product) => {
+          return product.id === action.payload;
+        });
+        filterProduct.quantity = state.selectedOption;
+        state.cart = [...state.cart, filterProduct];
+        console.log(filterProduct);
+        console.log("added");
+      } else {
+        console.log("add shode");
+      }
+    },
+    getQuantity: (state, action) => {
+      console.log(action.payload);
+      state.selectedOption = Number(action.payload);
     },
   },
   extraReducers: (builder) => {

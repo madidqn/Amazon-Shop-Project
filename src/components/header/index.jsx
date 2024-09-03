@@ -9,7 +9,7 @@ import styles from "./style.module.css";
 import { FaMapMarkerAlt, FaSearch, FaBars } from "react-icons/fa";
 
 function Header() {
-  const { value } = useSelector((state) => state.products);
+  const { cart } = useSelector((state) => state.products);
   const [selectedOption, setSelectedOption] = useState(null);
   const options = [
     { value: "all", label: "All" },
@@ -17,6 +17,11 @@ function Header() {
     { value: "laptops", label: "Laptops" },
     { value: "mobile accessories", label: "Mobile accessories" },
   ];
+  const totol = () => {
+    return cart.reduce((prev, curr) => prev + curr.quantity, 0);
+  };
+  const quantity = totol();
+  console.log(quantity);
   return (
     <header className={styles.header}>
       <div className={styles.searchbar}>
@@ -55,7 +60,7 @@ function Header() {
           <span>& Orders</span>
         </div>
         <Link className={styles.cart} to={"/cart"}>
-          <span>{value}</span>
+          <span>{quantity > 0 && cart.length === 0 ? 0 : quantity}</span>
           <img src="./cart.avif" alt="cart" />
           <span>Cart</span>
         </Link>

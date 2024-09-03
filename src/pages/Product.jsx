@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 // component
-import Main from "../components/main";
 import { actions } from "./../store/productsSlice";
+import Main from "../components/main";
 
 // style
 import styles from "./Product.module.css";
@@ -18,7 +18,9 @@ function Product() {
   const dispatch = useDispatch();
 
   const { id } = useParams();
-  const { products } = useSelector((state) => state.products);
+  const { products, cart, selectedOption } = useSelector(
+    (state) => state.products
+  );
   const filterProducts = products.filter((product) => product.id === id);
 
   const text1 = useRef(true);
@@ -35,16 +37,24 @@ function Product() {
   const [showParagraph, setShowParagraph] = useState(false);
   const [showSupport, setShowSupport] = useState(false);
 
-  const [selectedOption, setSelectedOption] = useState();
+  // const [selectedOption, setSelectedOption] = useState();
   function fixOptions() {
     let values = [];
-    for (let i = 1; i <= filterProducts[0].quantity; i++) {
+    for (let i = 1; i <= 27; i++) {
       values.push({ id: i - 1, value: i, label: `Quantity: ${i}` });
     }
     return values;
   }
   const options = fixOptions();
 
+  // const addProduct = (id) => {
+  //   if (!cart.some((product) => product.id === id)) {
+  //     dispatch(actions.addToCart());
+  //     const filterProduct = products.find((product) => {
+  //       return product.id === id;
+  //     });
+  //   }
+  // };
   return (
     <Main>
       <div className={styles.product}>
@@ -283,7 +293,7 @@ function Product() {
               </div>
               <h4>In Stock</h4>
               <select
-                onChange={(e) => setSelectedOption(e.target.value)}
+                onChange={(e) => dispatch(actions.getQuantity(e.target.value))}
                 value={selectedOption}
               >
                 {options.map((option) => (
@@ -293,7 +303,9 @@ function Product() {
                 ))}
               </select>
               <button
-                onClick={() => dispatch(actions.getId(filterProducts[0]?.id))}
+                onClick={() =>
+                  dispatch(actions.addToCart(filterProducts[0]?.id))
+                }
               >
                 Add to cart
               </button>
