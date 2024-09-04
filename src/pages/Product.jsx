@@ -18,7 +18,7 @@ function Product() {
   const dispatch = useDispatch();
 
   const { id } = useParams();
-  const { products, cart, selectedOption } = useSelector(
+  const { products, added, selectedQuantity } = useSelector(
     (state) => state.products
   );
   const filterProducts = products.filter((product) => product.id === id);
@@ -37,7 +37,6 @@ function Product() {
   const [showParagraph, setShowParagraph] = useState(false);
   const [showSupport, setShowSupport] = useState(false);
 
-  // const [selectedOption, setSelectedOption] = useState();
   function fixOptions() {
     let values = [];
     for (let i = 1; i <= 27; i++) {
@@ -47,14 +46,6 @@ function Product() {
   }
   const options = fixOptions();
 
-  // const addProduct = (id) => {
-  //   if (!cart.some((product) => product.id === id)) {
-  //     dispatch(actions.addToCart());
-  //     const filterProduct = products.find((product) => {
-  //       return product.id === id;
-  //     });
-  //   }
-  // };
   return (
     <Main>
       <div className={styles.product}>
@@ -294,7 +285,7 @@ function Product() {
               <h4>In Stock</h4>
               <select
                 onChange={(e) => dispatch(actions.getQuantity(e.target.value))}
-                value={selectedOption}
+                value={selectedQuantity}
               >
                 {options.map((option) => (
                   <option value={option.value} key={option.id}>
@@ -303,8 +294,11 @@ function Product() {
                 ))}
               </select>
               <button
-                onClick={() =>
-                  dispatch(actions.addToCart(filterProducts[0]?.id))
+                onClick={
+                  // !added
+                  // ?
+                  () => dispatch(actions.addToCart(filterProducts[0]?.id))
+                  // : () => dispatch(actions.deleteProduct())
                 }
               >
                 Add to cart

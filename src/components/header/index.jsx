@@ -21,7 +21,6 @@ function Header() {
     return cart.reduce((prev, curr) => prev + curr.quantity, 0);
   };
   const quantity = totol();
-  console.log(quantity);
   return (
     <header className={styles.header}>
       <div className={styles.searchbar}>

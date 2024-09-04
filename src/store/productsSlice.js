@@ -4,7 +4,8 @@ import axios from "axios";
 const initialState = {
   products: [],
   cart: [],
-  selectedOption: 1,
+  selectedQuantity: 1,
+  added: false,
 };
 
 export const getProducts = createAsyncThunk("api/products", async () => {
@@ -20,17 +21,19 @@ export const productsSlice = createSlice({
         const filterProduct = state.products.find((product) => {
           return product.id === action.payload;
         });
-        filterProduct.quantity = state.selectedOption;
+        filterProduct.quantity = state.selectedQuantity;
         state.cart = [...state.cart, filterProduct];
-        console.log(filterProduct);
+        state.added = true;
         console.log("added");
       } else {
         console.log("add shode");
       }
     },
     getQuantity: (state, action) => {
-      console.log(action.payload);
-      state.selectedOption = Number(action.payload);
+      state.selectedQuantity = Number(action.payload);
+    },
+    deleteProduct: () => {
+      console.log("salam mahdieh");
     },
   },
   extraReducers: (builder) => {
