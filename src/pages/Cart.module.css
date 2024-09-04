@@ -1,0 +1,20 @@
+.cartContainer {
+  background-color: aliceblue;
+  padding: 2rem;
+}
+.cartContainer > h1 {
+  font-weight: 400;
+  padding-bottom: 1rem;
+}
+.checkProducts {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  padding-bottom: 1rem;
+}
+.goToHome {
+  color: blue;
+}
+.goToHome:hover {
+  color: darkblue;
+}
