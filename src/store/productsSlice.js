@@ -32,8 +32,8 @@ export const productsSlice = createSlice({
     getQuantity: (state, action) => {
       state.selectedQuantity = Number(action.payload);
     },
-    deleteProduct: () => {
-      console.log("salam mahdieh");
+    deleteProductsAtCart: (state) => {
+      state.cart = [];
     },
   },
   extraReducers: (builder) => {

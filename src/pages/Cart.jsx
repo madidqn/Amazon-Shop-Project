@@ -1,5 +1,6 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { actions } from "./../store/productsSlice";
 
 //component
 import Main from "../components/main";
@@ -8,8 +9,20 @@ import Main from "../components/main";
 import styles from "./Cart.module.css";
 
 function Cart() {
+  const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.products);
-  console.log(cart.length);
+  const totol = () => {
+    return cart.reduce((prev, curr) => prev + curr.quantity, 0);
+  };
+  const quantity = totol();
+  const totolPrice = () => {
+    return cart.reduce(
+      (prev, curr) => prev + curr.quantity * curr.final_price,
+      0
+    );
+  };
+  const subtotal = totolPrice();
+
   return (
     <Main>
       {cart.length > 0 ? (
@@ -17,15 +30,17 @@ function Cart() {
           <div className={styles.cartContainer}>
             <div className={styles.product}>
               <h2>Shopping Basket</h2>
-              <span>Deselect all items</span>
+              <span onClick={() => dispatch(actions.deleteProductsAtCart())}>
+                Deselect all items
+              </span>
               <ul>
                 {cart.map((product) => (
                   <li>
                     <img src={product.src} alt={product.alt} />
                     <div>
-                      <div className={styles.title}>
+                      <div className={styles.discription}>
                         <p>{product.discription}</p>
-                        <h3 key={product.id}>{product.title}</h3>
+                        <h3 key={product.id}>${product.final_price}</h3>
                       </div>
                       <h3>In Stock</h3>
                       <img src="/prime.avif" alt="prime" />
@@ -45,12 +60,20 @@ function Cart() {
                   </li>
                 ))}
               </ul>
-              <h3>Subtotal (44 item): $481200</h3>
+              <h3>
+                Subtotal ({quantity} item): ${subtotal}
+              </h3>
             </div>
-            <div>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias ex
-              debitis quod dolore, voluptatum doloribus eveniet praesentium sunt
-              voluptates impedit. Quisquam eveniet.
+            <div className={styles.totol}>
+              <p> Subtotal ({quantity} item):</p>
+              <h3>${subtotal}</h3>
+              <div className={styles.gift}>
+                <input type="checkbox" />
+                <span>
+                  This will be a gift <a href="#">Learn more</a>
+                </span>
+              </div>
+              <button>Proceed to Checkout</button>
             </div>
           </div>
         </>

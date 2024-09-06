@@ -1,8 +1,10 @@
 .cartContainerEmpty {
   background-color: white;
   padding: 2rem;
+  margin-top: 2rem;
 }
 .cartContainer {
+  margin-top: 2rem;
   padding: 2rem;
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -43,6 +45,11 @@
   border-bottom: 1px solid #edeff0;
   width: 100%;
   padding-bottom: 1rem;
+  color: #8ba7a8;
+}
+.product > span:hover {
+  cursor: pointer;
+  color: red;
 }
 .product ul > li {
   display: flex;
@@ -55,7 +62,7 @@
   width: 200px;
   height: 200px;
 }
-.title {
+.discription {
   display: flex;
   padding-bottom: 1rem;
   width: 100%;
@@ -86,4 +93,27 @@
 
 .product > h3 {
   text-align: right;
+}
+
+.totol {
+  padding: 2rem;
+}
+
+.totol > h3 {
+  padding: 1rem 0;
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+.totol button {
+  width: 100%;
+  height: 40px;
+  letter-spacing: 1px;
+  border-radius: 9px;
+  border: none;
+  outline: none;
+  background-color: #fed813;
+}
+.totol button:hover {
+  cursor: pointer;
+  filter: grayscale(40%);
 }

@@ -45,7 +45,7 @@ function Product() {
     return values;
   }
   const options = fixOptions();
-
+  //component taki
   return (
     <Main>
       <div className={styles.product}>
