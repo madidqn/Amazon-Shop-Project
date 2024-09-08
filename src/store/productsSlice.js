@@ -30,10 +30,19 @@ export const productsSlice = createSlice({
       }
     },
     getQuantity: (state, action) => {
+      //done
       state.selectedQuantity = Number(action.payload);
     },
-    deleteProductsAtCart: (state) => {
+    deleteAllProductsAtCart: (state) => {
+      // done
       state.cart = [];
+    },
+    deleteProductAtCart: (state, action) => {
+      // done
+      const filterProducts = state.cart.filter(
+        (product) => product.id !== action.payload
+      );
+      state.cart = filterProducts;
     },
   },
   extraReducers: (builder) => {

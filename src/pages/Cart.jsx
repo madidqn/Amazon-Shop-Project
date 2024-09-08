@@ -30,7 +30,7 @@ function Cart() {
           <div className={styles.cartContainer}>
             <div className={styles.product}>
               <h2>Shopping Basket</h2>
-              <span onClick={() => dispatch(actions.deleteProductsAtCart())}>
+              <span onClick={() => dispatch(actions.deleteAllProductsAtCart())}>
                 Deselect all items
               </span>
               <ul>
@@ -56,18 +56,29 @@ function Cart() {
                       <p>
                         <span>Colour Name: </span>white
                       </p>
+                      <div>
+                        <span
+                          onClick={() =>
+                            dispatch(actions.deleteProductAtCart(product.id))
+                          }
+                        >
+                          | Delete |
+                        </span>
+                        <span> Save for later |</span>
+                        <span> See more like this |</span>
+                        <span> Share</span>
+                      </div>
                     </div>
                   </li>
                 ))}
               </ul>
               <h3>
-                Subtotal ({cart.length > 0 ? quantity : 0} item):{" "}
-                {cart.length > 0 ? subtotal : 0}
+                Subtotal ({quantity} item): ${subtotal}
               </h3>
             </div>
             <div className={styles.totol}>
-              <p> Subtotal ({cart.length > 0 ? quantity : 0} item):</p>
-              <h3>{cart.length > 0 ? subtotal : 0}</h3>
+              <p> Subtotal ({quantity} item):</p>
+              <h3>${subtotal}</h3>
               <div className={styles.gift}>
                 <input type="checkbox" />
                 <span>
