@@ -61,12 +61,13 @@ function Cart() {
                 ))}
               </ul>
               <h3>
-                Subtotal ({quantity} item): ${subtotal}
+                Subtotal ({cart.length > 0 ? quantity : 0} item):{" "}
+                {cart.length > 0 ? subtotal : 0}
               </h3>
             </div>
             <div className={styles.totol}>
-              <p> Subtotal ({quantity} item):</p>
-              <h3>${subtotal}</h3>
+              <p> Subtotal ({cart.length > 0 ? quantity : 0} item):</p>
+              <h3>{cart.length > 0 ? subtotal : 0}</h3>
               <div className={styles.gift}>
                 <input type="checkbox" />
                 <span>
