@@ -11,17 +11,19 @@ import styles from "./Cart.module.css";
 function Cart() {
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.products);
-  const totol = () => {
+
+  const numberOfProducts = () => {
     return cart.reduce((prev, curr) => prev + curr.quantity, 0);
   };
-  const quantity = totol();
-  const totolPrice = () => {
+  const quantity = numberOfProducts();
+
+  const totolCost = () => {
     return cart.reduce(
       (prev, curr) => prev + curr.quantity * curr.final_price,
       0
     );
   };
-  const subtotal = totolPrice();
+  const subtotal = totolCost();
 
   return (
     <Main>

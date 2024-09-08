@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../store/productsSlice";
 
 //component
-import Product from "../product";
+import Product from "../product/index";
 
 //style
 import styles from "./style.module.css";

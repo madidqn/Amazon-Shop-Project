@@ -1,50 +1,38 @@
 import { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 // component
-import { actions } from "./../store/productsSlice";
 import Main from "../components/main";
+import SectionEnd from "../components/product/SectionEnd";
 
 // style
 import styles from "./Product.module.css";
 
 //icon
-import { FaMapMarkerAlt } from "react-icons/fa";
 import { BiMessageDetail } from "react-icons/bi";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 function Product() {
-  const dispatch = useDispatch();
-
   const { id } = useParams();
-  const { products, added, selectedQuantity } = useSelector(
-    (state) => state.products
-  );
+
+  const [showList, setShowList] = useState(false);
+  const [showParagraph, setShowParagraph] = useState(false);
+  const [style, setStyle] = useState("");
+
+  const { products } = useSelector((state) => state.products);
   const filterProducts = products.filter((product) => product.id === id);
 
   const text1 = useRef(true);
   const text2 = useRef(true);
-  const [style, setStyle] = useState("");
+
   function fixStyle(content) {
     setStyle(content);
   }
+
   useEffect(() => {
     !style ? setStyle(text1.current.innerText) : null;
   }, [style]);
-
-  const [showList, setShowList] = useState(false);
-  const [showParagraph, setShowParagraph] = useState(false);
-  const [showSupport, setShowSupport] = useState(false);
-
-  function fixOptions() {
-    let values = [];
-    for (let i = 1; i <= 27; i++) {
-      values.push({ id: i - 1, value: i, label: `Quantity: ${i}` });
-    }
-    return values;
-  }
-  const options = fixOptions();
   //component taki
   return (
     <Main>
@@ -267,81 +255,7 @@ function Product() {
               </p>
             </div>
           </section>
-          <section>
-            <div className={styles.buy}>
-              <h5>Buy new :</h5>
-              <div className={styles.buyPrice}>
-                <span>$</span>
-                <span>{filterProducts[0]?.final_price}</span>
-                <span>99</span>
-              </div>
-              <p>$91.31 Shipping & Import Fees</p>
-              <p> Deposit to Iran Details Delivery</p>
-              <span> Wednesday, May 15</span>
-              <div className={styles.deliver}>
-                <FaMapMarkerAlt />
-                <span>Deliver to Iran</span>
-              </div>
-              <h4>In Stock</h4>
-              <select
-                onChange={(e) => dispatch(actions.getQuantity(e.target.value))}
-                value={selectedQuantity}
-              >
-                {options.map((option) => (
-                  <option value={option.value} key={option.id}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-              <button
-                onClick={
-                  // !added
-                  // ?
-                  () => dispatch(actions.addToCart(filterProducts[0]?.id))
-                  // : () => dispatch(actions.deleteProduct())
-                }
-              >
-                Add to cart
-              </button>
-              <div
-                className={`${styles.buyLists} ${
-                  showSupport ? styles.seeMoreBuy : styles.showLessBuy
-                }`}
-              >
-                <div>
-                  <span>Ships from</span>
-                  <span>Amazon.com</span>
-                </div>
-                <div>
-                  <span>Sold by</span>
-                  <span>Amazon.com</span>
-                </div>
-                <div>
-                  <span>Returns</span>
-                  <span className={styles.return}>
-                    Eligible for Return, Refund or Replacement within 30 days of
-                    receipt
-                  </span>
-                </div>
-                <div>
-                  <span>Payments</span>
-                  <span className={styles.return}>Secure transaction</span>
-                </div>
-                <div>
-                  <span>Support</span>
-                  <span className={styles.return}>
-                    Product support included
-                  </span>
-                </div>
-              </div>
-              <span
-                className={styles.seeReturn}
-                onClick={() => setShowSupport((state) => !state)}
-              >
-                {showSupport ? "Show less" : "See more"}
-              </span>
-            </div>
-          </section>
+          <SectionEnd id={id} />
         </div>
       </div>
     </Main>
