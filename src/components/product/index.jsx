@@ -25,7 +25,7 @@ function Product({ index }) {
         <span>99</span>
       </div>
       <span className={styles.price}>${products[index]?.price}</span>
-      <p>{products[index]?.discription}</p>
+      <p className={styles.discription}>{products[index]?.discription}</p>
       <div className={styles.stars}>
         {products[index]?.rating.map((element, index) => (
           <img src={element} alt="star" key={index} />
