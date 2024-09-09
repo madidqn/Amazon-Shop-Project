@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import useProduct from "./../custom-hook/useProduct";
 
 // component
 import Main from "../components/main";
@@ -11,9 +11,7 @@ import styles from "./Product.module.css";
 
 function Product() {
   const { id } = useParams();
-
-  const { products } = useSelector((state) => state.products);
-  const filterProducts = products.filter((product) => product.id === id);
+  const [filterProducts] = useProduct(id);
 
   return (
     <Main>

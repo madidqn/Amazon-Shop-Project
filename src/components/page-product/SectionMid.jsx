@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
+import useProduct from "../../custom-hook/useProduct";
 
 import styles from "./SectionMid.module.css";
 
@@ -7,16 +7,14 @@ import { BiMessageDetail } from "react-icons/bi";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 function SectionMid({ id }) {
-  const [showList, setShowList] = useState(false);
-  const [showParagraph, setShowParagraph] = useState(false);
-  const [style, setStyle] = useState("");
-
-  //hook
-  const { products } = useSelector((state) => state.products);
-  const filterProducts = products.filter((product) => product.id === id);
+  const [filterProducts] = useProduct(id);
 
   const text1 = useRef(true);
   const text2 = useRef(true);
+
+  const [showList, setShowList] = useState(false);
+  const [showParagraph, setShowParagraph] = useState(false);
+  const [style, setStyle] = useState("");
 
   function fixStyle(content) {
     setStyle(content);

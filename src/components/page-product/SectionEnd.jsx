@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import useProduct from "../../custom-hook/useProduct";
 
 import { actions } from "../../store/productsSlice";
 
@@ -10,12 +11,13 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 function SectionEnd({ id }) {
   const dispatch = useDispatch();
 
+  const [filterProducts] = useProduct(id);
+
+  const { cart } = useSelector((state) => state.products);
+
   const [addToCart, setAddToCart] = useState();
   const [showSupport, setShowSupport] = useState(false);
   const [selectedQuantity, setSelectedQuantity] = useState();
-
-  const { products, cart } = useSelector((state) => state.products);
-  const filterProducts = products.filter((product) => product.id === id);
 
   function fixOptions() {
     let values = [];
