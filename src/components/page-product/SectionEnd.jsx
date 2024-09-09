@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import useProduct from "../../custom-hook/useProduct";
 
+//store
 import { actions } from "../../store/productsSlice";
 
+//style
 import styles from "./SectionEnd.module.css";
 
+//icon
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 function SectionEnd({ id }) {

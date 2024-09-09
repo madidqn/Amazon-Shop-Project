@@ -1,19 +1,11 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
-import { getProducts } from "../../store/productsSlice";
+import useData from "../../custom-hook/useData";
 
 //style
 import styles from "./style.module.css";
 
 function Product({ index }) {
-  const { products } = useSelector((state) => state.products);
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProducts());
-  }, []);
+  const [products] = useData();
 
   return (
     <Link className={styles.product} to={`/product/${products[index]?.id}`}>

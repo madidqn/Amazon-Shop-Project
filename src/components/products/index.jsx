@@ -1,8 +1,4 @@
-// import { useData } from "./../../custom-hook/useData.js";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import { getProducts } from "../../store/productsSlice";
+import useData from "../../custom-hook/useData";
 
 //component
 import Product from "../product/index";
@@ -11,13 +7,7 @@ import Product from "../product/index";
 import styles from "./style.module.css";
 
 function Products() {
-  // const [products] = useData();
-  const { products } = useSelector((state) => state.products);
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProducts());
-  }, []);
+  const [products] = useData();
 
   return (
     <div className={styles.products}>

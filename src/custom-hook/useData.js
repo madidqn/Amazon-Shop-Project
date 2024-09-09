@@ -11,6 +11,6 @@ function useData() {
     dispatch(getProducts());
   }, []);
 
-  return { products };
+  return [products];
 }
 export default useData;
