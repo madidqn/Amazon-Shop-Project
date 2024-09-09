@@ -13,13 +13,14 @@ function Cart() {
   const { cart } = useSelector((state) => state.products);
 
   const numberOfProducts = () => {
-    return cart.reduce((prev, curr) => prev + curr.quantity, 0);
+    return cart.reduce((initValue, curElem) => initValue + curElem.quantity, 0);
   };
   const quantity = numberOfProducts();
 
   const totolCost = () => {
     return cart.reduce(
-      (prev, curr) => prev + curr.quantity * curr.final_price,
+      (initValue, curElem) =>
+        initValue + curElem.quantity * curElem.final_price,
       0
     );
   };
@@ -37,7 +38,7 @@ function Cart() {
               </span>
               <ul>
                 {cart.map((product) => (
-                  <li>
+                  <li key={product.id}>
                     <img src={product.src} alt={product.alt} />
                     <div>
                       <div className={styles.discription}>

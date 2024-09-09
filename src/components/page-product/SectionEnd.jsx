@@ -18,9 +18,9 @@ function SectionEnd({ id }) {
 
   const { cart } = useSelector((state) => state.products);
 
-  const [addToCart, setAddToCart] = useState();
+  const [addItemCart, setAddItemCart] = useState();
   const [showSupport, setShowSupport] = useState(false);
-  const [selectedQuantity, setSelectedQuantity] = useState();
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   function fixOptions() {
     let values = [];
@@ -31,13 +31,16 @@ function SectionEnd({ id }) {
   }
   const options = fixOptions();
 
+  function handlerAddToCart(id) {
+    dispatch(actions.addToCart({ id, selectedQuantity }));
+  }
   useEffect(() => {
     if (cart.find((product) => product.id === id)) {
-      setAddToCart(true);
+      setAddItemCart(true);
     } else {
-      setAddToCart(false);
+      setAddItemCart(false);
     }
-  }, [cart, addToCart]);
+  }, [cart, addItemCart]);
 
   return (
     <section>
@@ -66,10 +69,8 @@ function SectionEnd({ id }) {
             </option>
           ))}
         </select>
-        <button
-          onClick={() => dispatch(actions.addToCart(filterProducts[0]?.id))}
-        >
-          {addToCart ? "Update" : "Add to cart"}
+        <button onClick={() => handlerAddToCart(filterProducts[0]?.id)}>
+          {addItemCart ? "Remove from cart" : "Add to cart"}
         </button>
         <div
           className={`${styles.buyLists} ${

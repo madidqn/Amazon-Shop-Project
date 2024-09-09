@@ -4,7 +4,6 @@ import axios from "axios";
 const initialState = {
   products: [],
   cart: [],
-  selectedQuantity: 1,
   added: false,
 };
 
@@ -17,21 +16,16 @@ export const productsSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
+      console.log(action.payload.id, action.payload.selectedQuantity);
       if (!state.cart.some((product) => product.id === action.payload)) {
         const filterProduct = state.products.find((product) => {
-          return product.id === action.payload;
+          return product.id === action.payload.id;
         });
-        filterProduct.quantity = state.selectedQuantity;
+        filterProduct.quantity = Number(action.payload.selectedQuantity);
         state.cart = [...state.cart, filterProduct];
-        state.added = true;
-        console.log("added");
       } else {
         console.log("add shode");
       }
-    },
-    getQuantity: (state, action) => {
-      //done
-      state.selectedQuantity = Number(action.payload);
     },
     deleteAllProductsAtCart: (state) => {
       // done
