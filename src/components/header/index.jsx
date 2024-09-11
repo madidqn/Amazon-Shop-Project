@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
-// import Select from "react-select";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+// import Select from "react-select";
 //style
 import styles from "./style.module.css";
 
@@ -24,11 +24,9 @@ function Header() {
   const form = useRef();
   useEffect(() => {
     if (clickInput) {
-      // document.body.style.filter = "grayscale(80%)";
-      form.current.style.border = "3px solid #feba73";
+      form.current.style.outline = "3px solid #feba73";
     } else {
-      // document.body.style.filter = "grayscale(0)";
-      form.current.style.border = "none";
+      form.current.style.outline = "none";
     }
   }, [clickInput]);
   return (
@@ -62,7 +60,7 @@ function Header() {
               onClick={() => setClickInput((prev) => !prev)}
             />
             <button>
-              <FaSearch className={styles.FaSearch} />
+              <FaSearch className={styles.iconSearch} />
             </button>
           </form>
         </div>

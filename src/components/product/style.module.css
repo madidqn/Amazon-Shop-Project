@@ -63,3 +63,9 @@
   font-weight: 300;
   padding-left: 5px;
 }
+.seeMore {
+  padding-top: 10px;
+}
+.seeMore:hover {
+  color: red;
+}

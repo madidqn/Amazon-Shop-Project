@@ -16,7 +16,8 @@
 .logo:hover {
   border: 2px solid white;
   transition: all 0.3s;
-  transform: scale(1.01);
+  transform: scale(1.02);
+  cursor: pointer;
 }
 .deliver {
   display: flex;
@@ -46,13 +47,13 @@
 .inputSearch {
   width: 60%;
   height: 40px;
+  margin: 0 5px;
 }
 .inputSearch form {
   border-radius: 0.25rem;
   display: flex;
   align-items: center;
   height: 100%;
-  border: 2px solid #feba73;
 }
 .inputSearch input {
   border: none;
@@ -70,10 +71,16 @@ input::placeholder {
   height: 100%;
   outline: none;
   border: none;
+  width: 90px;
   border-top-left-radius: 0.19rem;
   border-bottom-left-radius: 0.19rem;
   background-color: #e7e5e6;
   border-right: 1px solid gray;
+  padding: 0 5px;
+}
+.inputSearch select:hover {
+  background-color: #bdd4e8da;
+  cursor: pointer;
 }
 .inputSearch button {
   width: 5.5%;
@@ -87,14 +94,14 @@ input::placeholder {
   align-items: center;
   justify-content: center;
 }
-.FaSearch {
+.iconSearch {
   font-size: 1.3rem;
 }
 .inputSearch button:hover {
   cursor: pointer;
   filter: grayscale(80%);
 }
-[class$="container"] {
+/* [class$="container"] {
   height: 100%;
   z-index: 5;
 }
@@ -107,7 +114,7 @@ input::placeholder {
 }
 [class$="indicatorSeparator"] {
   display: none;
-}
+} */
 .language {
   display: flex;
   align-items: center;
