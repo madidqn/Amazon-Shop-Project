@@ -33,7 +33,7 @@ function Cart() {
           <div className={styles.cartContainer}>
             <div className={styles.product}>
               <h2>Shopping Basket</h2>
-              <span onClick={() => dispatch(actions.deleteAllProductsAtCart())}>
+              <span onClick={() => dispatch(actions.deleteProductsFromCart())}>
                 Deselect all items
               </span>
               <ul>
@@ -62,7 +62,7 @@ function Cart() {
                       <div>
                         <span
                           onClick={() =>
-                            dispatch(actions.deleteProductAtCart(product.id))
+                            dispatch(actions.deleteProduct(product.id))
                           }
                         >
                           | Delete |
@@ -89,6 +89,9 @@ function Cart() {
                 </span>
               </div>
               <button>Proceed to Checkout</button>
+              <Link to={"/"} className={styles.continue}>
+                Continue shopping
+              </Link>
             </div>
           </div>
         </>

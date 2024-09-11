@@ -43,6 +43,7 @@
 }
 .price {
   padding-bottom: 10px;
+  text-decoration: line-through;
 }
 .discription {
   text-align: justify;

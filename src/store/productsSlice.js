@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const initialState = {
   products: [],
   cart: [],
-  added: false,
 };
 
 export const getProducts = createAsyncThunk("api/products", async () => {
@@ -16,30 +16,50 @@ export const productsSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      console.log(action.payload.id, action.payload.selectedQuantity);
+      // add product
       if (!state.cart.some((product) => product.id === action.payload)) {
-        const filterProduct = state.products.find((product) => {
+        const addedProduct = state.products.find((product) => {
           return product.id === action.payload.id;
         });
-        filterProduct.quantity = Number(action.payload.selectedQuantity);
-        state.cart = [...state.cart, filterProduct];
-      } else {
-        console.log("add shode");
+        addedProduct.quantity = Number(action.payload.selectedQuantity);
+        state.cart = [...state.cart, addedProduct];
+        toast.success("Added to the cart!", {
+          position: "top-center",
+        });
       }
     },
-    deleteAllProductsAtCart: (state) => {
-      // done
+    updateProductQuantity: (state, action) => {
+      // update product
+      const updatedProduct = state.products.find((product) => {
+        return product.id === action.payload.id;
+      });
+      updatedProduct.quantity = Number(action.payload.selectedQuantity);
+      const filterCart = state.products.filter((product) => {
+        product.id !== action.payload.id;
+      });
+      filterCart.push(updatedProduct);
+      state.cart = filterCart;
+      toast.success("Update the product is successful!", {
+        position: "top-center",
+      });
+    },
+    deleteProductsFromCart: (state) => {
+      // delete products from cart
       state.cart = [];
     },
-    deleteProductAtCart: (state, action) => {
-      // done
+    deleteProduct: (state, action) => {
+      // delete product from cart and page product
       const filterProducts = state.cart.filter(
         (product) => product.id !== action.payload
       );
       state.cart = filterProducts;
+      toast.success("Remove from the cart", {
+        position: "top-center",
+      });
     },
   },
   extraReducers: (builder) => {
+    // get data from server
     builder.addCase(getProducts.fulfilled, (state, action) => {
       state.products = action.payload;
     });

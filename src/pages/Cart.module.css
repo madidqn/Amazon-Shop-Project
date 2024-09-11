@@ -112,8 +112,17 @@
   border: none;
   outline: none;
   background-color: #fed813;
+  margin-bottom: 10px;
 }
 .totol button:hover {
   cursor: pointer;
   filter: grayscale(40%);
+}
+.continue {
+  font-size: 14px;
+  color: blue;
+}
+.continue:hover {
+  color: darkblue;
+  text-decoration: underline;
 }

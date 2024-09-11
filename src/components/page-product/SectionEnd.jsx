@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import useProduct from "../../custom-hook/useProduct";
 
@@ -14,13 +14,15 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 function SectionEnd({ id }) {
   const dispatch = useDispatch();
 
-  const [filterProducts] = useProduct(id);
-
   const { cart } = useSelector((state) => state.products);
 
   const [addItemCart, setAddItemCart] = useState();
   const [showSupport, setShowSupport] = useState(false);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
+
+  const btnAdd = useRef();
+
+  const [filterProducts] = useProduct(id);
 
   function fixOptions() {
     let values = [];
@@ -34,6 +36,11 @@ function SectionEnd({ id }) {
   function handlerAddToCart(id) {
     dispatch(actions.addToCart({ id, selectedQuantity }));
   }
+
+  function handlerUpdateProduct(id) {
+    dispatch(actions.updateProductQuantity({ id, selectedQuantity }));
+  }
+
   useEffect(() => {
     if (cart.find((product) => product.id === id)) {
       setAddItemCart(true);
@@ -60,7 +67,14 @@ function SectionEnd({ id }) {
         </div>
         <h4>In Stock</h4>
         <select
-          onChange={(e) => setSelectedQuantity(e.target.value)}
+          onChange={(e) => {
+            if (addItemCart) {
+              btnAdd.current.innerHTML = "Update";
+              setSelectedQuantity(e.target.value);
+            } else {
+              setSelectedQuantity(e.target.value);
+            }
+          }}
           value={selectedQuantity}
         >
           {options.map((option) => (
@@ -69,8 +83,22 @@ function SectionEnd({ id }) {
             </option>
           ))}
         </select>
-        <button onClick={() => handlerAddToCart(filterProducts[0]?.id)}>
-          {addItemCart ? "Remove from cart" : "Add to cart"}
+        <button
+          onClick={() => {
+            if (btnAdd.current.innerHTML === "Add to cart") {
+              btnAdd.current.innerHTML = "Remove from cart";
+              handlerAddToCart(filterProducts[0]?.id);
+            } else if (btnAdd.current.innerHTML === "Update") {
+              btnAdd.current.innerHTML = "Remove from cart";
+              handlerUpdateProduct(filterProducts[0]?.id);
+            } else {
+              btnAdd.current.innerHTML = "Add to cart";
+              dispatch(actions.deleteProduct(filterProducts[0]?.id));
+            }
+          }}
+          ref={btnAdd}
+        >
+          {!addItemCart ? "Add to cart" : "Remove from cart"}
         </button>
         <div
           className={`${styles.buyLists} ${
