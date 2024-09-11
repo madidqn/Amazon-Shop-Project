@@ -33,13 +33,14 @@ function SectionEnd({ id }) {
   }
   const options = fixOptions();
 
-  function handlerAddToCart(id) {
-    dispatch(actions.addToCart({ id, selectedQuantity }));
-  }
-
-  function handlerUpdateProduct(id) {
-    dispatch(actions.updateProductQuantity({ id, selectedQuantity }));
-  }
+  const totolCost = () => {
+    return cart.reduce(
+      (initValue, curElem) =>
+        initValue + curElem.quantity * curElem.final_price,
+      0
+    );
+  };
+  const subtotal = totolCost();
 
   function handlerOnChange(e) {
     if (addItemCart) {
@@ -53,10 +54,20 @@ function SectionEnd({ id }) {
   function handlerClickBtnAdd() {
     if (btnAdd.current.innerHTML === "Add to cart") {
       btnAdd.current.innerHTML = "Remove from cart";
-      handlerAddToCart(filterProducts[0]?.id);
+      dispatch(
+        actions.addToCart({
+          id: filterProducts[0]?.id,
+          selectedQuantity: selectedQuantity,
+        })
+      );
     } else if (btnAdd.current.innerHTML === "Update") {
       btnAdd.current.innerHTML = "Remove from cart";
-      handlerUpdateProduct(filterProducts[0]?.id);
+      dispatch(
+        actions.updateProductQuantity({
+          id: filterProducts[0]?.id,
+          selectedQuantity: selectedQuantity,
+        })
+      );
     } else {
       btnAdd.current.innerHTML = "Add to cart";
       dispatch(actions.deleteProduct(filterProducts[0]?.id));
@@ -78,7 +89,7 @@ function SectionEnd({ id }) {
         <h5>Buy new :</h5>
         <div className={styles.buyPrice}>
           <span>$</span>
-          <span>{filterProducts[0]?.final_price}</span>
+          <span>{subtotal}</span>
           <span>99</span>
         </div>
         <p>$91.31 Shipping & Import Fees</p>

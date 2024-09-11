@@ -1,5 +1,5 @@
-import { useState } from "react";
-import Select from "react-select";
+import { useEffect, useState, useRef } from "react";
+// import Select from "react-select";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 //style
@@ -10,17 +10,27 @@ import { FaMapMarkerAlt, FaSearch, FaBars } from "react-icons/fa";
 
 function Header() {
   const { cart } = useSelector((state) => state.products);
-  const [selectedOption, setSelectedOption] = useState(null);
-  const options = [
-    { value: "all", label: "All" },
-    { value: "mobiles", label: "Mobiles" },
-    { value: "laptops", label: "Laptops" },
-    { value: "mobile accessories", label: "Mobile accessories" },
-  ];
+  const [clickInput, setClickInput] = useState(false);
+  // const options = [
+  //   { value: "all", label: "All" },
+  //   { value: "mobiles", label: "Mobiles" },
+  //   { value: "laptops", label: "Laptops" },
+  //   { value: "mobile accessories", label: "Mobile accessories" },
+  // ];
   const totol = () => {
     return cart.reduce((prev, curr) => prev + curr.quantity, 0);
   };
   const quantity = totol();
+  const form = useRef();
+  useEffect(() => {
+    if (clickInput) {
+      // document.body.style.filter = "grayscale(80%)";
+      form.current.style.border = "3px solid #feba73";
+    } else {
+      // document.body.style.filter = "grayscale(0)";
+      form.current.style.border = "none";
+    }
+  }, [clickInput]);
   return (
     <header className={styles.header}>
       <div className={styles.searchbar}>
@@ -33,14 +43,24 @@ function Header() {
           </span>
         </div>
         <div className={styles.inputSearch}>
-          <form action="">
-            <Select
+          <form action="" ref={form}>
+            {/* <Select
               value={selectedOption}
               placeholder="All"
               onChange={setSelectedOption}
               options={options}
+            /> */}
+            <select name="search" id="search">
+              <option value="all">All</option>
+              <option value="mobile">Mobile</option>
+              <option value="laptop">Laptop</option>
+              <option value="mobile accessories">Mobile accessories</option>
+            </select>
+            <input
+              type="text"
+              placeholder="Search Amazon"
+              onClick={() => setClickInput((prev) => !prev)}
             />
-            <input type="text" placeholder="Search Amazon" />
             <button>
               <FaSearch className={styles.FaSearch} />
             </button>

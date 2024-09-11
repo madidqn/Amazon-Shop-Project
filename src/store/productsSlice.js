@@ -30,15 +30,16 @@ export const productsSlice = createSlice({
     },
     updateProductQuantity: (state, action) => {
       // update product
-      const updatedProduct = state.products.find((product) => {
+      const updatedProduct = state.cart.find((product) => {
         return product.id === action.payload.id;
       });
       updatedProduct.quantity = Number(action.payload.selectedQuantity);
-      const filterCart = state.products.filter((product) => {
+      const filterCart = state.cart.filter((product) => {
         product.id !== action.payload.id;
       });
       filterCart.push(updatedProduct);
-      state.cart = filterCart;
+      console.log(filterCart);
+      // state.cart = filterCart;
       toast.success("Update the product is successful!", {
         position: "top-center",
       });

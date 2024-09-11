@@ -66,8 +66,14 @@
 input::placeholder {
   color: #aaafb5;
 }
-.inputSearch input:focus form {
-  border: 2px solid #feba73;
+.inputSearch select {
+  height: 100%;
+  outline: none;
+  border: none;
+  border-top-left-radius: 0.19rem;
+  border-bottom-left-radius: 0.19rem;
+  background-color: #e7e5e6;
+  border-right: 1px solid gray;
 }
 .inputSearch button {
   width: 5.5%;
@@ -90,6 +96,7 @@ input::placeholder {
 }
 [class$="container"] {
   height: 100%;
+  z-index: 5;
 }
 [class$="option"]:hover {
   background-color: rgba(83, 83, 145, 0.497);

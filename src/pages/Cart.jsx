@@ -4,6 +4,7 @@ import { actions } from "./../store/productsSlice";
 
 //component
 import Main from "../components/main";
+import Product from "../components/cart";
 
 //style
 import styles from "./Cart.module.css";
@@ -31,52 +32,19 @@ function Cart() {
       {cart.length > 0 ? (
         <>
           <div className={styles.cartContainer}>
-            <div className={styles.product}>
+            <div className={styles.containerProduct}>
               <h2>Shopping Basket</h2>
               <span onClick={() => dispatch(actions.deleteProductsFromCart())}>
                 Deselect all items
               </span>
               <ul>
                 {cart.map((product) => (
-                  <li key={product.id}>
-                    <img src={product.src} alt={product.alt} />
-                    <div>
-                      <div className={styles.discription}>
-                        <p>{product.discription}</p>
-                        <h3 key={product.id}>${product.final_price}</h3>
-                      </div>
-                      <h3>In Stock</h3>
-                      <img src="/prime.avif" alt="prime" />
-                      <div className={styles.gift}>
-                        <input type="checkbox" />
-                        <span>
-                          This will be a gift <a href="#">Learn more</a>
-                        </span>
-                      </div>
-                      <p>
-                        <span>Style Name: </span>0.5 litre work container
-                      </p>
-                      <p>
-                        <span>Colour Name: </span>white
-                      </p>
-                      <div>
-                        <span
-                          onClick={() =>
-                            dispatch(actions.deleteProduct(product.id))
-                          }
-                        >
-                          | Delete |
-                        </span>
-                        <span> Save for later |</span>
-                        <span> See more like this |</span>
-                        <span> Share</span>
-                      </div>
-                    </div>
-                  </li>
+                  <Product product={product} />
                 ))}
               </ul>
               <h3>
-                Subtotal ({quantity} item): ${subtotal}
+                Subtotal ({quantity} item):
+                <span>${subtotal}</span>
               </h3>
             </div>
             <div className={styles.totol}>

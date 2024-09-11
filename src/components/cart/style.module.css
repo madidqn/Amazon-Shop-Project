@@ -1,0 +1,79 @@
+.product {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+  padding: 1rem;
+  border-bottom: 1px solid #edeff0;
+}
+.product > img:first-child {
+  width: 250px;
+  height: 250px;
+}
+.discription {
+  display: flex;
+  padding-bottom: 1rem;
+  width: 100%;
+}
+.product div h3 {
+  font-weight: 400;
+  padding-bottom: 1rem;
+  color: #37793d;
+  font-size: 1.4rem;
+}
+.product div img {
+  width: 70px;
+  height: 20px;
+}
+.gift {
+  padding: 1rem 0;
+}
+.gift input {
+  margin-right: 10px;
+  width: 15px;
+}
+.product div > p {
+  padding-bottom: 1rem;
+}
+.product div > p > span {
+  font-weight: 500;
+}
+.actions > select {
+  padding: 5px 8px;
+  margin-right: 13px;
+  width: 150px;
+  outline: none;
+  border-radius: 9px;
+  background-color: #f0f2f1;
+}
+.actions select:hover {
+  cursor: pointer;
+}
+.actions select:focus {
+  outline: none;
+  border: none;
+}
+.actions > p {
+  color: #509396;
+  display: inline-block;
+  padding-right: 13px;
+}
+.actions > p:not(:last-child)::after {
+  content: "";
+  height: 17px;
+  width: 2px;
+  background-color: #dde1e8;
+  margin-left: 13px;
+  display: inline-flex;
+}
+.delete::before {
+  content: "";
+  height: 17px;
+  width: 2px;
+  background-color: #dde1e8;
+  margin-right: 13px;
+  display: inline-flex;
+}
+.actions > p:hover {
+  color: red;
+  cursor: pointer;
+}
