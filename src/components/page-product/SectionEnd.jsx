@@ -41,6 +41,29 @@ function SectionEnd({ id }) {
     dispatch(actions.updateProductQuantity({ id, selectedQuantity }));
   }
 
+  function handlerOnChange(e) {
+    if (addItemCart) {
+      btnAdd.current.innerHTML = "Update";
+      setSelectedQuantity(e.target.value);
+    } else {
+      setSelectedQuantity(e.target.value);
+    }
+  }
+
+  function handlerClickBtnAdd() {
+    if (btnAdd.current.innerHTML === "Add to cart") {
+      btnAdd.current.innerHTML = "Remove from cart";
+      handlerAddToCart(filterProducts[0]?.id);
+    } else if (btnAdd.current.innerHTML === "Update") {
+      btnAdd.current.innerHTML = "Remove from cart";
+      handlerUpdateProduct(filterProducts[0]?.id);
+    } else {
+      btnAdd.current.innerHTML = "Add to cart";
+      dispatch(actions.deleteProduct(filterProducts[0]?.id));
+      setSelectedQuantity(1);
+    }
+  }
+
   useEffect(() => {
     if (cart.find((product) => product.id === id)) {
       setAddItemCart(true);
@@ -66,38 +89,14 @@ function SectionEnd({ id }) {
           <span>Deliver to Iran</span>
         </div>
         <h4>In Stock</h4>
-        <select
-          onChange={(e) => {
-            if (addItemCart) {
-              btnAdd.current.innerHTML = "Update";
-              setSelectedQuantity(e.target.value);
-            } else {
-              setSelectedQuantity(e.target.value);
-            }
-          }}
-          value={selectedQuantity}
-        >
+        <select onChange={(e) => handlerOnChange(e)} value={selectedQuantity}>
           {options.map((option) => (
             <option value={option.value} key={option.id}>
               {option.label}
             </option>
           ))}
         </select>
-        <button
-          onClick={() => {
-            if (btnAdd.current.innerHTML === "Add to cart") {
-              btnAdd.current.innerHTML = "Remove from cart";
-              handlerAddToCart(filterProducts[0]?.id);
-            } else if (btnAdd.current.innerHTML === "Update") {
-              btnAdd.current.innerHTML = "Remove from cart";
-              handlerUpdateProduct(filterProducts[0]?.id);
-            } else {
-              btnAdd.current.innerHTML = "Add to cart";
-              dispatch(actions.deleteProduct(filterProducts[0]?.id));
-            }
-          }}
-          ref={btnAdd}
-        >
+        <button onClick={() => handlerClickBtnAdd()} ref={btnAdd}>
           {!addItemCart ? "Add to cart" : "Remove from cart"}
         </button>
         <div
