@@ -166,7 +166,7 @@ input::placeholder {
   flex-direction: column;
   row-gap: 5px;
   padding-bottom: 10px;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #d7d9da;
 }
 .selectLanguage > div > input {
   cursor: pointer;
@@ -178,7 +178,7 @@ input::placeholder {
 }
 .changeCurrency {
   padding: 10px 0;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #d7d9da;
 }
 .changeCurrency > p:first-child {
   font-size: 14px;
@@ -267,7 +267,7 @@ input::placeholder {
 }
 .modalSignIn > div:first-child {
   padding-bottom: 10px;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #d7d9da;
   display: flex;
   flex-direction: column;
   row-gap: 5px;
@@ -310,7 +310,7 @@ input::placeholder {
   font-size: 13px;
 }
 .modalSignIn > div:last-child > ul:last-child {
-  border-left: 1px solid gray;
+  border-left: 1px solid #d7d9da;
   padding-left: 8px;
 }
 .modalSignIn > div:last-child > ul > li:hover {
@@ -357,18 +357,18 @@ input::placeholder {
   padding-left: 0.4rem;
   height: 32px;
 }
-.menu ul {
+.menu > ul {
   display: flex;
   align-items: center;
   column-gap: 10px;
   height: 100%;
 }
-.menu li:first-child {
+.menu > ul > li:first-child {
   display: flex;
   align-items: center;
   column-gap: 5px;
 }
-.menu li {
+.menu > ul > li {
   font-size: 13px;
   border: 2px solid transparent;
   padding: 0 5px;
@@ -376,12 +376,75 @@ input::placeholder {
   height: 100%;
   align-content: center;
 }
-.menu li:hover {
+.menu > ul > li:hover {
   border: 2px solid white;
   transition: all 0.3s;
   cursor: pointer;
 }
-.bergurIcon {
+.burgerIcon {
   width: 40px;
   font-size: 20px;
+}
+.container {
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  z-index: 12;
+}
+.container > div:first-child {
+  background-color: #000;
+  opacity: 0.6;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+}
+.burgerMenu {
+  color: #121921;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 17;
+  width: 25%;
+  height: 100%;
+  background-color: white;
+  overflow-y: scroll;
+}
+.burgerMenu > div:first-child {
+  background-color: #232f3f;
+  color: white;
+  padding: 0.5rem 10px;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+.burgerMenu > div > ul {
+  padding: 0 1.4rem;
+  padding-top: 1rem;
+  padding-bottom: 13px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 13px;
+}
+.burgerMenu div > ul:not(:last-child) {
+  border-bottom: 1px solid #d7d9da;
+}
+.burgerMenu div > ul > li {
+  display: flex;
+  align-items: center;
+}
+.burgerMenu div > ul > li:hover {
+  cursor: pointer;
+}
+.iconArrowRight {
+  margin-left: auto;
+  margin-top: 7px;
+  color: #a1a1a1;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.burgerMenu div > ul > li > p {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
 }

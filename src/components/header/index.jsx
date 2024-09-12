@@ -7,12 +7,14 @@ import styles from "./style.module.css";
 
 //icons
 import { FaMapMarkerAlt, FaSearch, FaBars } from "react-icons/fa";
+import { CgClose, CgChevronRight } from "react-icons/cg";
 
 function Header() {
   const { cart } = useSelector((state) => state.products);
   const [clickInput, setClickInput] = useState(false);
   const [showModalLanguage, setshowModalLanguage] = useState(false);
   const [showModalAccount, setshowModalAccount] = useState(false);
+  const [burgerMenu, setBurgerMenu] = useState(false);
   // const options = [
   //   { value: "all", label: "All" },
   //   { value: "mobiles", label: "Mobiles" },
@@ -189,8 +191,8 @@ function Header() {
       </div>
       <nav className={styles.menu}>
         <ul>
-          <li>
-            <FaBars className={styles.bergurIcon} />
+          <li onClick={() => setBurgerMenu(true)}>
+            <FaBars className={styles.burgerIcon} />
             <span>All</span>
           </li>
           <li>Today's Deals</li>
@@ -199,6 +201,109 @@ function Header() {
           <li>Gift Cards</li>
           <li>Sell</li>
         </ul>
+        {burgerMenu && (
+          <div className={styles.container}>
+            <div onClick={() => setBurgerMenu(false)}></div>
+            <div className={styles.burgerMenu}>
+              <div>
+                <img src="/person.avif" alt="person" />
+                <h3>Hello, sign in</h3>
+              </div>
+              <div>
+                <ul>
+                  <h3> Digital Content & Devices</h3>
+                  <li>
+                    <span>Amazon Musicarrow</span>
+                    <CgChevronRight className={styles.iconArrowRight} />
+                  </li>
+                  <li>
+                    <span>Kindle E -readers & Booksarrow</span>
+                    <CgChevronRight className={styles.iconArrowRight} />
+                  </li>
+                  <li>
+                    <span>Amazon Appstorearrow</span>
+                    <CgChevronRight className={styles.iconArrowRight} />
+                  </li>
+                </ul>
+                <ul>
+                  <h3>Shop by Department</h3>
+                  <li>
+                    <span>Electronicsarrow </span>
+                    <CgChevronRight className={styles.iconArrowRight} />
+                  </li>
+                  <li>
+                    <span>Computerarrow</span>
+                    <CgChevronRight className={styles.iconArrowRight} />
+                  </li>
+                  <li>
+                    <span>Smart Homearrow</span>
+                    <CgChevronRight className={styles.iconArrowRight} />
+                  </li>
+                  <li>
+                    <span> Arts & Craftsarrow </span>
+                    <CgChevronRight className={styles.iconArrowRight} />
+                  </li>
+                  <li>
+                    <span> See all </span>
+                    <CgChevronRight className={styles.iconArrowRight} />
+                  </li>
+                </ul>
+                <ul>
+                  <h3>Programs & Features</h3>
+                  <li>
+                    <span>Gift Cardsarrow</span>
+                    <CgChevronRight className={styles.iconArrowRight} />
+                  </li>
+                  <li>
+                    <span>Shop By Interestarrow</span>
+                    <CgChevronRight className={styles.iconArrowRight} />
+                  </li>
+                  <li>
+                    <span> Amazon livearrow</span>
+                    <CgChevronRight className={styles.iconArrowRight} />
+                  </li>
+                  <li>
+                    <span>International Shoppingarrow </span>
+                    <CgChevronRight className={styles.iconArrowRight} />
+                  </li>
+                  <li>
+                    <span> See all</span>
+                    <CgChevronRight className={styles.iconArrowRight} />
+                  </li>
+                </ul>
+                <ul>
+                  <h3>Help & Settings</h3>
+                  <li>
+                    <span>Your Account</span>
+                    <CgChevronRight className={styles.iconArrowRight} />
+                  </li>
+                  <li>
+                    <p>
+                      <img src="/language.avif" alt="language" />
+                      <span>English</span>
+                    </p>
+                    <CgChevronRight className={styles.iconArrowRight} />
+                  </li>
+                  <li>
+                    <p>
+                      <img src="erth.avif" alt="erth" />
+                      <span>United States</span>
+                    </p>
+                    <CgChevronRight className={styles.iconArrowRight} />
+                  </li>
+                  <li>
+                    <span>Customer Service</span>
+                    <CgChevronRight className={styles.iconArrowRight} />
+                  </li>
+                  <li>
+                    <span>Sign in</span>
+                    <CgChevronRight className={styles.iconArrowRight} />
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
     </header>
   );
