@@ -11,7 +11,8 @@ import { FaMapMarkerAlt, FaSearch, FaBars } from "react-icons/fa";
 function Header() {
   const { cart } = useSelector((state) => state.products);
   const [clickInput, setClickInput] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showModalLanguage, setshowModalLanguage] = useState(false);
+  const [showModalAccount, setshowModalAccount] = useState(false);
   // const options = [
   //   { value: "all", label: "All" },
   //   { value: "mobiles", label: "Mobiles" },
@@ -67,14 +68,14 @@ function Header() {
         </div>
         <div
           className={styles.language}
-          onMouseEnter={() => setShowModal(true)}
-          onMouseLeave={() => setShowModal(false)}
+          onMouseEnter={() => setshowModalLanguage(true)}
+          onMouseLeave={() => setshowModalLanguage(false)}
         >
           <div>
             <img src="./language.avif" alt="language" />
             <span>EN</span>
           </div>
-          {showModal && (
+          {showModalLanguage && (
             <div className={styles.modalLanguage}>
               <span>
                 Change language
@@ -134,11 +135,49 @@ function Header() {
             </div>
           )}
         </div>
-        <div className={styles.signIn}>
-          <span>Hello, sign in</span>
-          <span>Account & Lists</span>
+        <div
+          className={styles.signIn}
+          onMouseEnter={() => setshowModalAccount(true)}
+          onMouseLeave={() => setshowModalAccount(false)}
+        >
+          <div>
+            <span>Hello, sign in</span>
+            <span>Account & Lists</span>
+          </div>
+          {showModalAccount && (
+            <div className={styles.modalSignIn}>
+              <div>
+                <button>Sign in</button>
+                <p>
+                  New customer? <a href="#">Start here.</a>
+                </p>
+              </div>
+              <div>
+                <ul>
+                  <li>Your Lists</li>
+                  <li>Create a List</li>
+                  <li>Find a List or Registry</li>
+                </ul>
+                <ul>
+                  <li> Your Account</li>
+                  <li>Account</li>
+                  <li>Orders</li>
+                  <li>Recommendations</li>
+                  <li>Browsing</li>
+                  <li>History</li>
+                  <li>Watchlist</li>
+                  <li>Video</li>
+                  <li>Purchases & Rentals</li>
+                  <li>Kindle Unlimited</li>
+                  <li>Subscribe & Save Items</li>
+                  <li>Memberships & Subscriptions</li>
+                  <li>Music Library</li>
+                </ul>
+              </div>
+            </div>
+          )}
         </div>
-        <div className={styles.signIn}>
+        <div className={styles.return}>
           <span>Returns</span>
           <span>& Orders</span>
         </div>

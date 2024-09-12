@@ -135,7 +135,7 @@ input::placeholder {
 .language > div:first-child span {
   font-size: 15px;
 }
-.language > div:first-child {
+.language > div:first-child:hover {
   border: 2px solid white;
   transition: all 0.3s;
   cursor: pointer;
@@ -225,6 +225,10 @@ input::placeholder {
   text-decoration: underline;
 }
 .signIn {
+  position: relative;
+}
+.signIn > div:first-child,
+.return {
   display: flex;
   flex-direction: column;
   row-gap: 5px;
@@ -234,16 +238,84 @@ input::placeholder {
   padding: 5px 7px;
   border-radius: 3px;
 }
-.signIn span:first-child {
+.signIn > div:first-child > span:first-child,
+.return > span:first-child {
   font-size: 11px;
 }
-.signIn span:last-child {
+.signIn > div:first-child > span:last-child,
+.return > span:last-child {
   font-weight: 700;
   font-size: 14px;
 }
-.signIn:hover {
+.signIn > div:first-child:hover,
+.return:hover {
   border: 2px solid white;
   transition: all 0.3s;
+  cursor: pointer;
+}
+.modalSignIn {
+  width: 400px;
+  position: absolute;
+  top: 100%;
+  transform: translateX(-30%);
+  z-index: 8;
+  background-color: white;
+  color: #121921;
+  padding: 10px 13px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.modalSignIn > div:first-child {
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  align-items: center;
+}
+.modalSignIn > div:first-child > button {
+  width: 70%;
+  height: 30px;
+  border-radius: 9px;
+  background-color: #fed813;
+  outline: none;
+  border: none;
+  letter-spacing: 1px;
+}
+.modalSignIn > div:first-child > button:hover {
+  cursor: pointer;
+  filter: grayscale(40%);
+}
+.modalSignIn > div:first-child > p {
+  font-size: 13px;
+}
+.modalSignIn > div:first-child > p > a {
+  padding-left: 5px;
+  color: #37793d;
+}
+.modalSignIn > div:first-child > p > a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: red;
+}
+.modalSignIn > div:last-child {
+  padding: 10px 0;
+  display: flex;
+  column-gap: 1.5rem;
+}
+.modalSignIn > div:last-child > ul {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+  font-size: 13px;
+}
+.modalSignIn > div:last-child > ul:last-child {
+  border-left: 1px solid gray;
+  padding-left: 8px;
+}
+.modalSignIn > div:last-child > ul > li:hover {
+  text-decoration: underline;
+  color: orange;
   cursor: pointer;
 }
 .cart {
