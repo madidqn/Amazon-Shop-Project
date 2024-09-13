@@ -14,6 +14,7 @@ function SectionMid({ id }) {
 
   const [showList, setShowList] = useState(false);
   const [showParagraph, setShowParagraph] = useState(false);
+  const [showModalStars, setShowModalStars] = useState(false);
   const [style, setStyle] = useState("");
 
   function fixStyle(content) {
@@ -33,10 +34,72 @@ function SectionMid({ id }) {
           Visit the acer Store
         </a>
         <div className={styles.rating}>
-          <span>4.3</span>
-          {filterProducts[0]?.rating.map((element, index) => (
-            <img src={element} alt="star" key={index} />
-          ))}
+          <div
+            onMouseEnter={() => setShowModalStars(true)}
+            onMouseLeave={() => setShowModalStars(false)}
+          >
+            <div>
+              <span>4.3</span>
+              {filterProducts[0]?.rating.map((element, index) => (
+                <img src={element} alt="star" key={index} />
+              ))}
+            </div>
+            {showModalStars && (
+              <div className={styles.modalStars}>
+                <div>
+                  {filterProducts[0]?.rating.map((element, index) => (
+                    <img src={element} alt="star" key={index} />
+                  ))}
+                  <span>4.3 out of 5</span>
+                </div>
+                <p>1,770 global ratings</p>
+                <ul>
+                  <li>
+                    <a href="#">4 star</a>
+                    <div>
+                      <span></span>
+                    </div>
+                    <a href="#">68%</a>
+                  </li>
+                  <li>
+                    <a href="#">4 star</a>
+                    <div>
+                      <span></span>
+                    </div>
+                    <a href="#">24%</a>
+                  </li>
+                  <li>
+                    <a href="#">3 star</a>
+                    <div>
+                      <span></span>
+                    </div>
+                    <a href="#">17%</a>
+                  </li>
+                  <li>
+                    <a href="#">2 star</a>
+                    <div>
+                      <span></span>
+                    </div>
+                    <a href="#">7%</a>
+                  </li>
+                  <li>
+                    <a href="#">2 star</a>
+                    <div>
+                      <span></span>
+                    </div>
+                    <a href="#">11%</a>
+                  </li>
+                  <li>
+                    <a href="#">1 star</a>
+                    <div>
+                      <span></span>
+                    </div>
+                    <a href="#">2%</a>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
           <a href="#" className={styles.voted}>
             {filterProducts[0]?.voted_number} ranting
           </a>
