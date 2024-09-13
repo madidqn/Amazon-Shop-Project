@@ -1,0 +1,26 @@
+.notFound {
+  padding: 1rem 0;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.notFound img {
+  height: 500px;
+  width: 40%;
+  align-self: center;
+}
+.backHome {
+  width: 10%;
+  text-align: center;
+  margin-left: 2rem;
+  color: black;
+  background-color: #fed813;
+  padding: 9px 13px;
+  border-radius: 9px;
+}
+.backHome:hover {
+  opacity: 0.8;
+}
