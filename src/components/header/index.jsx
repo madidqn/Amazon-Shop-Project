@@ -1,38 +1,64 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 // import Select from "react-select";
 //style
 import styles from "./style.module.css";
 
 //icons
 import { FaMapMarkerAlt, FaSearch, FaBars } from "react-icons/fa";
-import { CgClose, CgChevronRight } from "react-icons/cg";
+import { CgChevronRight } from "react-icons/cg";
+import { actions } from "../../store/productsSlice";
 
 function Header() {
-  const { cart } = useSelector((state) => state.products);
-  const [clickInput, setClickInput] = useState(false);
+  const { cart, inputSearchClick } = useSelector((state) => state.products);
+
+  const dispatch = useDispatch();
+
   const [showModalLanguage, setshowModalLanguage] = useState(false);
   const [showModalAccount, setshowModalAccount] = useState(false);
   const [burgerMenu, setBurgerMenu] = useState(false);
+
+  // const [showMenuMusic, setShowMenuMusic] = useState(false);
   // const options = [
   //   { value: "all", label: "All" },
   //   { value: "mobiles", label: "Mobiles" },
   //   { value: "laptops", label: "Laptops" },
   //   { value: "mobile accessories", label: "Mobile accessories" },
   // ];
+
   const totol = () => {
     return cart.reduce((prev, curr) => prev + curr.quantity, 0);
   };
   const quantity = totol();
   const form = useRef();
+
+  function clickInputBorder(e) {
+    e.stopPropagation();
+    dispatch(actions.handlerInput(true));
+  }
+
+  function handlerModalOpen(state) {
+    state(true);
+    dispatch(actions.handlerShowModal(true));
+  }
+
+  function handlerModalClose(state) {
+    state(false);
+    dispatch(actions.handlerShowModal(false));
+  }
+
   useEffect(() => {
-    if (clickInput) {
+    document.body.addEventListener("click", () => {
+      dispatch(actions.handlerInput(false));
+    });
+    if (inputSearchClick) {
       form.current.style.outline = "3px solid #feba73";
     } else {
       form.current.style.outline = "none";
     }
-  }, [clickInput]);
+  }, [inputSearchClick]);
+
   return (
     <header className={styles.header}>
       <div className={styles.searchbar}>
@@ -61,7 +87,7 @@ function Header() {
             <input
               type="text"
               placeholder="Search Amazon"
-              onClick={() => setClickInput((prev) => !prev)}
+              onClick={(e) => clickInputBorder(e)}
             />
             <button>
               <FaSearch className={styles.iconSearch} />
@@ -70,8 +96,8 @@ function Header() {
         </div>
         <div
           className={styles.language}
-          onMouseEnter={() => setshowModalLanguage(true)}
-          onMouseLeave={() => setshowModalLanguage(false)}
+          onMouseEnter={() => handlerModalOpen(setshowModalLanguage)}
+          onMouseLeave={() => handlerModalClose(setshowModalLanguage)}
         >
           <div>
             <img src="./language.avif" alt="language" />
@@ -139,8 +165,8 @@ function Header() {
         </div>
         <div
           className={styles.signIn}
-          onMouseEnter={() => setshowModalAccount(true)}
-          onMouseLeave={() => setshowModalAccount(false)}
+          onMouseEnter={() => handlerModalOpen(setshowModalAccount)}
+          onMouseLeave={() => handlerModalClose(setshowModalAccount)}
         >
           <div>
             <span>Hello, sign in</span>
@@ -201,109 +227,126 @@ function Header() {
           <li>Gift Cards</li>
           <li>Sell</li>
         </ul>
-        {burgerMenu && (
-          <div className={styles.container}>
-            <div onClick={() => setBurgerMenu(false)}></div>
-            <div className={styles.burgerMenu}>
-              <div>
-                <img src="/person.avif" alt="person" />
-                <h3>Hello, sign in</h3>
-              </div>
-              <div>
-                <ul>
-                  <h3> Digital Content & Devices</h3>
-                  <li>
-                    <span>Amazon Musicarrow</span>
-                    <CgChevronRight className={styles.iconArrowRight} />
-                  </li>
-                  <li>
-                    <span>Kindle E -readers & Booksarrow</span>
-                    <CgChevronRight className={styles.iconArrowRight} />
-                  </li>
-                  <li>
-                    <span>Amazon Appstorearrow</span>
-                    <CgChevronRight className={styles.iconArrowRight} />
-                  </li>
-                </ul>
-                <ul>
-                  <h3>Shop by Department</h3>
-                  <li>
-                    <span>Electronicsarrow </span>
-                    <CgChevronRight className={styles.iconArrowRight} />
-                  </li>
-                  <li>
-                    <span>Computerarrow</span>
-                    <CgChevronRight className={styles.iconArrowRight} />
-                  </li>
-                  <li>
-                    <span>Smart Homearrow</span>
-                    <CgChevronRight className={styles.iconArrowRight} />
-                  </li>
-                  <li>
-                    <span> Arts & Craftsarrow </span>
-                    <CgChevronRight className={styles.iconArrowRight} />
-                  </li>
-                  <li>
-                    <span> See all </span>
-                    <CgChevronRight className={styles.iconArrowRight} />
-                  </li>
-                </ul>
-                <ul>
-                  <h3>Programs & Features</h3>
-                  <li>
-                    <span>Gift Cardsarrow</span>
-                    <CgChevronRight className={styles.iconArrowRight} />
-                  </li>
-                  <li>
-                    <span>Shop By Interestarrow</span>
-                    <CgChevronRight className={styles.iconArrowRight} />
-                  </li>
-                  <li>
-                    <span> Amazon livearrow</span>
-                    <CgChevronRight className={styles.iconArrowRight} />
-                  </li>
-                  <li>
-                    <span>International Shoppingarrow </span>
-                    <CgChevronRight className={styles.iconArrowRight} />
-                  </li>
-                  <li>
-                    <span> See all</span>
-                    <CgChevronRight className={styles.iconArrowRight} />
-                  </li>
-                </ul>
-                <ul>
-                  <h3>Help & Settings</h3>
-                  <li>
-                    <span>Your Account</span>
-                    <CgChevronRight className={styles.iconArrowRight} />
-                  </li>
-                  <li>
-                    <p>
-                      <img src="/language.avif" alt="language" />
-                      <span>English</span>
-                    </p>
-                    <CgChevronRight className={styles.iconArrowRight} />
-                  </li>
-                  <li>
-                    <p>
-                      <img src="erth.avif" alt="erth" />
-                      <span>United States</span>
-                    </p>
-                    <CgChevronRight className={styles.iconArrowRight} />
-                  </li>
-                  <li>
-                    <span>Customer Service</span>
-                    <CgChevronRight className={styles.iconArrowRight} />
-                  </li>
-                  <li>
-                    <span>Sign in</span>
-                    <CgChevronRight className={styles.iconArrowRight} />
-                  </li>
-                </ul>
+        {
+          burgerMenu && (
+            <div className={styles.container}>
+              <div onClick={() => setBurgerMenu(false)}></div>
+              <div className={styles.burgerMenu}>
+                <div>
+                  <img src="/person.avif" alt="person" />
+                  <h3>Hello, sign in</h3>
+                </div>
+                <div>
+                  <ul>
+                    <h3> Digital Content & Devices</h3>
+                    <li>
+                      <span>Amazon Music</span>
+                      <CgChevronRight className={styles.iconArrowRight} />
+                    </li>
+                    <li>
+                      <span>Kindle E -readers & Books</span>
+                      <CgChevronRight className={styles.iconArrowRight} />
+                    </li>
+                    <li>
+                      <span>Amazon Appstore</span>
+                      <CgChevronRight className={styles.iconArrowRight} />
+                    </li>
+                  </ul>
+                  <ul>
+                    <h3>Shop by Department</h3>
+                    <li>
+                      <span>Electronics</span>
+                      <CgChevronRight className={styles.iconArrowRight} />
+                    </li>
+                    <li>
+                      <span>Computer</span>
+                      <CgChevronRight className={styles.iconArrowRight} />
+                    </li>
+                    <li>
+                      <span>Smart Home</span>
+                      <CgChevronRight className={styles.iconArrowRight} />
+                    </li>
+                    <li>
+                      <span> Arts & Crafts</span>
+                      <CgChevronRight className={styles.iconArrowRight} />
+                    </li>
+                    <li>
+                      <span> See all </span>
+                      <CgChevronRight className={styles.iconArrowRight} />
+                    </li>
+                  </ul>
+                  <ul>
+                    <h3>Programs & Features</h3>
+                    <li>
+                      <span>Gift Cards</span>
+                      <CgChevronRight className={styles.iconArrowRight} />
+                    </li>
+                    <li>
+                      <span>Shop By Interest</span>
+                      <CgChevronRight className={styles.iconArrowRight} />
+                    </li>
+                    <li>
+                      <span> Amazon live</span>
+                      <CgChevronRight className={styles.iconArrowRight} />
+                    </li>
+                    <li>
+                      <span>International Shopping</span>
+                      <CgChevronRight className={styles.iconArrowRight} />
+                    </li>
+                    <li>
+                      <span> See all</span>
+                      <CgChevronRight className={styles.iconArrowRight} />
+                    </li>
+                  </ul>
+                  <ul>
+                    <h3>Help & Settings</h3>
+                    <li>
+                      <span>Your Account</span>
+                      <CgChevronRight className={styles.iconArrowRight} />
+                    </li>
+                    <li>
+                      <p>
+                        <img src="/language.avif" alt="language" />
+                        <span>English</span>
+                      </p>
+                      <CgChevronRight className={styles.iconArrowRight} />
+                    </li>
+                    <li>
+                      <p>
+                        <img src="erth.avif" alt="erth" />
+                        <span>United States</span>
+                      </p>
+                      <CgChevronRight className={styles.iconArrowRight} />
+                    </li>
+                    <li>
+                      <span>Customer Service</span>
+                      <CgChevronRight className={styles.iconArrowRight} />
+                    </li>
+                    <li>
+                      <span>Sign in</span>
+                      <CgChevronRight className={styles.iconArrowRight} />
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )
+          //   <div className={styles.menuMusic}>
+          //     <div onClick={setBurgerMenu(true)}>
+          //       <CgChevronRight />
+          //       <span>Main Menu</span>
+          //     </div>
+          //     <ul>
+          //       <li>Stream Music</li>
+          //       <li>Amazon Music Unlimited</li>
+          //       <li>Free Streaming Music</li>
+          //       <li>Podcasts</li>
+          //       <li>Open Web Player</li>
+          //       <li>Download the app</li>
+          //     </ul>
+          //   </div>
+          // )
+        }
       </nav>
     </header>
   );

@@ -1,10 +1,9 @@
 .cartContainerEmpty {
   background-color: white;
   padding: 2rem;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 .cartContainer {
-  margin-top: 2rem;
   padding: 2rem;
   display: grid;
   grid-template-columns: 3fr 1fr;
