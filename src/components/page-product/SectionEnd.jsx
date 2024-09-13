@@ -89,7 +89,9 @@ function SectionEnd({ id }) {
         <h5>Buy new :</h5>
         <div className={styles.buyPrice}>
           <span>$</span>
-          <span>{subtotal}</span>
+          <span>
+            {cart.length > 0 ? subtotal : filterProducts[id].final_price}
+          </span>
           <span>99</span>
         </div>
         <p>$91.31 Shipping & Import Fees</p>
