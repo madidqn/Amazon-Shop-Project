@@ -2,13 +2,19 @@ import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 // import Select from "react-select";
+
+//components
+import Language from "../modals/Language";
+
 //style
 import styles from "./style.module.css";
 
 //icons
 import { FaMapMarkerAlt, FaSearch, FaBars } from "react-icons/fa";
-import { CgChevronRight } from "react-icons/cg";
+
 import { actions } from "../../store/productsSlice";
+import Account from "../modals/Account";
+import BurgerMenu from "../burger-menu";
 
 function Header() {
   const { cart, inputSearchClick } = useSelector((state) => state.products);
@@ -103,65 +109,7 @@ function Header() {
             <img src="./language.avif" alt="language" />
             <span>EN</span>
           </div>
-          {showModalLanguage && (
-            <div className={styles.modalLanguage}>
-              <span>
-                Change language
-                <a href="#"> Learn more</a>
-              </span>
-              <div className={styles.selectLanguage}>
-                <div>
-                  <input type="radio" id="en" name="language" />
-                  <label htmlFor="en">English - EN</label>
-                </div>
-                <div>
-                  <input type="radio" id="es" name="language" />
-                  <label htmlFor="es">español - ES</label>
-                </div>
-                <div>
-                  <input type="radio" id="ar" name="language" />
-                  <label htmlFor="ar">العربية - AR</label>
-                </div>
-                <div>
-                  <input type="radio" id="de" name="language" />
-                  <label htmlFor="de">Deutsch - DE</label>
-                </div>
-                <div>
-                  <input type="radio" id="he" name="language" />
-                  <label htmlFor="he">עברית - HE</label>
-                </div>
-                <div>
-                  <input type="radio" id="ko" name="language" />
-                  <label htmlFor="ko">한국어 - KO</label>
-                </div>
-                <div>
-                  <input type="radio" id="pt" name="language" />
-                  <label htmlFor="pt">português - PT</label>
-                </div>
-                <div>
-                  <input type="radio" id="zh" name="language" />
-                  <label htmlFor="zh">中文 (简体) - ZH</label>
-                </div>
-              </div>
-              <div className={styles.changeCurrency}>
-                <p>
-                  <span> Change currency</span>
-                  <a href="#">Learn more</a>
-                </p>
-                <p>
-                  <span> $ - USD - US Dollar</span>
-                  <a href="#">Change</a>
-                </p>
-              </div>
-              <div className={styles.region}>
-                <div>
-                  <img src="/language.avif" alt="language" />
-                  <p>you are shopping on Amazon.com</p>
-                </div>
-                <a href="#">Change country/region</a>
-              </div>
-            </div>
-          )}
+          {showModalLanguage && <Language />}
         </div>
         <div
           className={styles.signIn}
@@ -172,38 +120,7 @@ function Header() {
             <span>Hello, sign in</span>
             <span>Account & Lists</span>
           </div>
-          {showModalAccount && (
-            <div className={styles.modalSignIn}>
-              <div>
-                <button>Sign in</button>
-                <p>
-                  New customer? <a href="#">Start here.</a>
-                </p>
-              </div>
-              <div>
-                <ul>
-                  <li>Your Lists</li>
-                  <li>Create a List</li>
-                  <li>Find a List or Registry</li>
-                </ul>
-                <ul>
-                  <li> Your Account</li>
-                  <li>Account</li>
-                  <li>Orders</li>
-                  <li>Recommendations</li>
-                  <li>Browsing</li>
-                  <li>History</li>
-                  <li>Watchlist</li>
-                  <li>Video</li>
-                  <li>Purchases & Rentals</li>
-                  <li>Kindle Unlimited</li>
-                  <li>Subscribe & Save Items</li>
-                  <li>Memberships & Subscriptions</li>
-                  <li>Music Library</li>
-                </ul>
-              </div>
-            </div>
-          )}
+          {showModalAccount && <Account />}
         </div>
         <div className={styles.return}>
           <span>Returns</span>
@@ -228,109 +145,7 @@ function Header() {
           <li>Sell</li>
         </ul>
         {
-          burgerMenu && (
-            <div className={styles.container}>
-              <div onClick={() => setBurgerMenu(false)}></div>
-              <div className={styles.burgerMenu}>
-                <div>
-                  <img src="/person.avif" alt="person" />
-                  <h3>Hello, sign in</h3>
-                </div>
-                <div>
-                  <ul>
-                    <h3> Digital Content & Devices</h3>
-                    <li>
-                      <span>Amazon Music</span>
-                      <CgChevronRight className={styles.iconArrowRight} />
-                    </li>
-                    <li>
-                      <span>Kindle E -readers & Books</span>
-                      <CgChevronRight className={styles.iconArrowRight} />
-                    </li>
-                    <li>
-                      <span>Amazon Appstore</span>
-                      <CgChevronRight className={styles.iconArrowRight} />
-                    </li>
-                  </ul>
-                  <ul>
-                    <h3>Shop by Department</h3>
-                    <li>
-                      <span>Electronics</span>
-                      <CgChevronRight className={styles.iconArrowRight} />
-                    </li>
-                    <li>
-                      <span>Computer</span>
-                      <CgChevronRight className={styles.iconArrowRight} />
-                    </li>
-                    <li>
-                      <span>Smart Home</span>
-                      <CgChevronRight className={styles.iconArrowRight} />
-                    </li>
-                    <li>
-                      <span> Arts & Crafts</span>
-                      <CgChevronRight className={styles.iconArrowRight} />
-                    </li>
-                    <li>
-                      <span> See all </span>
-                      <CgChevronRight className={styles.iconArrowRight} />
-                    </li>
-                  </ul>
-                  <ul>
-                    <h3>Programs & Features</h3>
-                    <li>
-                      <span>Gift Cards</span>
-                      <CgChevronRight className={styles.iconArrowRight} />
-                    </li>
-                    <li>
-                      <span>Shop By Interest</span>
-                      <CgChevronRight className={styles.iconArrowRight} />
-                    </li>
-                    <li>
-                      <span> Amazon live</span>
-                      <CgChevronRight className={styles.iconArrowRight} />
-                    </li>
-                    <li>
-                      <span>International Shopping</span>
-                      <CgChevronRight className={styles.iconArrowRight} />
-                    </li>
-                    <li>
-                      <span> See all</span>
-                      <CgChevronRight className={styles.iconArrowRight} />
-                    </li>
-                  </ul>
-                  <ul>
-                    <h3>Help & Settings</h3>
-                    <li>
-                      <span>Your Account</span>
-                      <CgChevronRight className={styles.iconArrowRight} />
-                    </li>
-                    <li>
-                      <p>
-                        <img src="/language.avif" alt="language" />
-                        <span>English</span>
-                      </p>
-                      <CgChevronRight className={styles.iconArrowRight} />
-                    </li>
-                    <li>
-                      <p>
-                        <img src="erth.avif" alt="erth" />
-                        <span>United States</span>
-                      </p>
-                      <CgChevronRight className={styles.iconArrowRight} />
-                    </li>
-                    <li>
-                      <span>Customer Service</span>
-                      <CgChevronRight className={styles.iconArrowRight} />
-                    </li>
-                    <li>
-                      <span>Sign in</span>
-                      <CgChevronRight className={styles.iconArrowRight} />
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          )
+          burgerMenu && <BurgerMenu />
           //   <div className={styles.menuMusic}>
           //     <div onClick={setBurgerMenu(true)}>
           //       <CgChevronRight />

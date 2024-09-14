@@ -1,0 +1,65 @@
+.modalSignIn {
+  width: 400px;
+  position: absolute;
+  top: 100%;
+  transform: translateX(-30%);
+  z-index: 21;
+  background-color: white;
+  color: #121921;
+  padding: 10px 13px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.modalSignIn > div:first-child {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d7d9da;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  align-items: center;
+}
+.modalSignIn > div:first-child > button {
+  width: 70%;
+  height: 30px;
+  border-radius: 9px;
+  background-color: #fed813;
+  outline: none;
+  border: none;
+  letter-spacing: 1px;
+}
+.modalSignIn > div:first-child > button:hover {
+  cursor: pointer;
+  filter: grayscale(40%);
+}
+.modalSignIn > div:first-child > p {
+  font-size: 13px;
+}
+.modalSignIn > div:first-child > p > a {
+  padding-left: 5px;
+  color: #37793d;
+}
+.modalSignIn > div:first-child > p > a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: red;
+}
+.modalSignIn > div:last-child {
+  padding: 10px 0;
+  display: flex;
+  column-gap: 1.5rem;
+}
+.modalSignIn > div:last-child > ul {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+  font-size: 13px;
+}
+.modalSignIn > div:last-child > ul:last-child {
+  border-left: 1px solid #d7d9da;
+  padding-left: 8px;
+}
+.modalSignIn > div:last-child > ul > li:hover {
+  text-decoration: underline;
+  color: orange;
+  cursor: pointer;
+}

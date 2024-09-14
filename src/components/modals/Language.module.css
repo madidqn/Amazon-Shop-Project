@@ -1,0 +1,86 @@
+.modalLanguage {
+  width: 270px;
+  color: white;
+  position: absolute;
+  top: 100%;
+  transform: translate(-30%, 0);
+  z-index: 21;
+  background-color: white;
+  padding: 10px 13px;
+  border-radius: 10px;
+  color: #121921;
+  cursor: pointer;
+}
+.modalLanguage > span {
+  font-size: 13px;
+  display: inline-block;
+  padding-bottom: 2rem;
+}
+.modalLanguage > span > a {
+  font-size: 12px;
+}
+.selectLanguage {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d7d9da;
+}
+.selectLanguage > div > input {
+  cursor: pointer;
+}
+.selectLanguage > div > label {
+  padding-left: 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.changeCurrency {
+  padding: 10px 0;
+  border-bottom: 1px solid #d7d9da;
+}
+.changeCurrency > p:first-child {
+  font-size: 14px;
+  padding-bottom: 10px;
+}
+.changeCurrency > p:first-child > a {
+  padding-left: 7px;
+  font-size: 12px;
+}
+.changeCurrency > p:first-child > a:hover,
+.changeCurrency > p:last-child > a:hover,
+.modalLanguage > span > a:hover {
+  text-decoration: underline;
+  color: red;
+}
+.changeCurrency > p:last-child {
+  font-size: 15px;
+  display: flex;
+  column-gap: 1rem;
+}
+.changeCurrency > p:last-child > a,
+.changeCurrency > p:first-child > a,
+.modalLanguage > span > a {
+  font-size: 12px;
+  color: #37793d;
+}
+.region {
+  padding-top: 10px;
+}
+.region > div {
+  display: flex;
+  column-gap: 10px;
+  padding-bottom: 5px;
+}
+.region > div > p {
+  font-size: 14px;
+}
+.region > a {
+  display: flex;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #37793d;
+}
+.region > a:hover {
+  text-decoration: underline;
+  color: red;
+}
