@@ -15,6 +15,7 @@ function SectionMid({ id }) {
   const [showList, setShowList] = useState(false);
   const [showParagraph, setShowParagraph] = useState(false);
   const [showModalStars, setShowModalStars] = useState(false);
+  const [showModalShopItems, setShowModalShopItems] = useState(false);
   const [style, setStyle] = useState("");
 
   function fixStyle(content) {
@@ -52,7 +53,7 @@ function SectionMid({ id }) {
                   ))}
                   <span>4.3 out of 5</span>
                 </div>
-                <p>1,770 global ratings</p>
+                <p>{filterProducts[0].voted_number} global ratings</p>
                 <ul>
                   <li>
                     <a href="#">4 star</a>
@@ -129,10 +130,23 @@ function SectionMid({ id }) {
           Available at a lower price from <a href="#"> other sellers </a>
           that may not offer free Prime shipping.
         </p>
-        <p>
-          <span>Extra Savings</span> Amazon Music offer with this purchase 1
-          Applicable Promotion
-        </p>
+        <div
+          className={styles.extraSavings}
+          onMouseEnter={() => setShowModalShopItems(true)}
+          onMouseLeave={() => setShowModalShopItems(false)}
+        >
+          <p>
+            <span>Extra Savings</span> Amazon Music offer with this purchase 1
+            Applicable Promotion
+          </p>
+          <IoIosArrowDown className={styles.iconDown} />
+          {showModalShopItems && (
+            <div>
+              Amazon Music offer with this purchase
+              <a href="#">Shop items</a>
+            </div>
+          )}
+        </div>
       </div>
       <div>
         <span>

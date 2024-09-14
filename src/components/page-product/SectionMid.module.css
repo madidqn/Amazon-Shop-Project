@@ -165,6 +165,49 @@
   align-self: start;
   padding-top: 4px;
 }
+.extraSavings {
+  position: relative;
+  z-index: 1;
+}
+.extraSavings p {
+  font-size: 14px;
+  word-spacing: 1px;
+  padding-left: 5px;
+  display: inline-block;
+}
+.extraSavings p:hover {
+  color: red;
+  cursor: pointer;
+}
+.iconDown {
+  color: #989a99;
+  transform: translateY(40%);
+}
+.extraSavings span {
+  color: white;
+  background-color: #edb155;
+  padding: 3px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.extraSavings > div {
+  position: absolute;
+  top: 120%;
+  background-color: white;
+  padding: 1rem 13px;
+  font-size: 14px;
+  border: 1px solid black;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.751);
+}
+.extraSavings > div > a {
+  color: #166a85;
+  padding-left: 5px;
+}
+.extraSavings > div > a:hover {
+  color: red;
+  text-decoration: underline;
+}
 .aboutProduct > div:nth-child(2) > span {
   font-size: 12px;
   padding-bottom: 0.7rem;
@@ -184,13 +227,6 @@
 .aboutProduct > div:nth-child(2) > p > a:hover {
   color: red;
   text-decoration: underline;
-}
-.aboutProduct > div:nth-child(2) > p > span {
-  color: white;
-  background-color: #edb155;
-  padding: 3px 2px;
-  cursor: pointer;
-  border-radius: 4px;
 }
 .aboutProduct > div:nth-child(2) > p:last-child {
   padding-bottom: 5px;

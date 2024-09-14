@@ -90,7 +90,7 @@ function SectionEnd({ id }) {
         <div className={styles.buyPrice}>
           <span>$</span>
           <span>
-            {cart.length > 0 ? subtotal : filterProducts[id].final_price}
+            {cart.length > 0 ? subtotal : filterProducts[0].final_price}
           </span>
           <span>99</span>
         </div>

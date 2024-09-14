@@ -12,7 +12,6 @@ import styles from "./Product.module.css";
 function Product() {
   const { id } = useParams();
   const [filterProducts] = useProduct(id);
-
   return (
     <Main>
       <div className={styles.product}>
