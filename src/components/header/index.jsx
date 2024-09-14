@@ -1,10 +1,15 @@
-import { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 // import Select from "react-select";
+
+// redux
+import { actionsModals } from "../../store/modalsSlice";
 
 //components
 import Language from "../modals/Language";
+import Account from "../modals/Account";
+import BurgerMenu from "../burger-menu";
 
 //style
 import styles from "./style.module.css";
@@ -12,20 +17,14 @@ import styles from "./style.module.css";
 //icons
 import { FaMapMarkerAlt, FaSearch, FaBars } from "react-icons/fa";
 
-import { actions } from "../../store/productsSlice";
-import Account from "../modals/Account";
-import BurgerMenu from "../burger-menu";
-
 function Header() {
-  const { cart, inputSearchClick } = useSelector((state) => state.products);
+  const { cart } = useSelector((state) => state.products);
+
+  const { inputSearchClick, showModalLanguage, showModalAccount, burgerMenu } =
+    useSelector((state) => state.modals);
 
   const dispatch = useDispatch();
 
-  const [showModalLanguage, setshowModalLanguage] = useState(false);
-  const [showModalAccount, setshowModalAccount] = useState(false);
-  const [burgerMenu, setBurgerMenu] = useState(false);
-
-  // const [showMenuMusic, setShowMenuMusic] = useState(false);
   // const options = [
   //   { value: "all", label: "All" },
   //   { value: "mobiles", label: "Mobiles" },
@@ -41,22 +40,12 @@ function Header() {
 
   function clickInputBorder(e) {
     e.stopPropagation();
-    dispatch(actions.handlerInput(true));
-  }
-
-  function handlerModalOpen(state) {
-    state(true);
-    dispatch(actions.handlerShowModal(true));
-  }
-
-  function handlerModalClose(state) {
-    state(false);
-    dispatch(actions.handlerShowModal(false));
+    dispatch(actionsModals.handlerInput(true));
   }
 
   useEffect(() => {
     document.body.addEventListener("click", () => {
-      dispatch(actions.handlerInput(false));
+      dispatch(actionsModals.handlerInput(false));
     });
     if (inputSearchClick) {
       form.current.style.outline = "3px solid #feba73";
@@ -102,8 +91,12 @@ function Header() {
         </div>
         <div
           className={styles.language}
-          onMouseEnter={() => handlerModalOpen(setshowModalLanguage)}
-          onMouseLeave={() => handlerModalClose(setshowModalLanguage)}
+          onMouseEnter={() =>
+            dispatch(actionsModals.handlerShowModalLanguage(true))
+          }
+          onMouseLeave={() =>
+            dispatch(actionsModals.handlerShowModalLanguage(false))
+          }
         >
           <div>
             <img src="./language.avif" alt="language" />
@@ -113,8 +106,12 @@ function Header() {
         </div>
         <div
           className={styles.signIn}
-          onMouseEnter={() => handlerModalOpen(setshowModalAccount)}
-          onMouseLeave={() => handlerModalClose(setshowModalAccount)}
+          onMouseEnter={() =>
+            dispatch(actionsModals.handlerShowModalAccount(true))
+          }
+          onMouseLeave={() =>
+            dispatch(actionsModals.handlerShowModalAccount(false))
+          }
         >
           <div>
             <span>Hello, sign in</span>
@@ -134,7 +131,7 @@ function Header() {
       </div>
       <nav className={styles.menu}>
         <ul>
-          <li onClick={() => setBurgerMenu(true)}>
+          <li onClick={() => dispatch(actionsModals.handlerBurgerMenu(true))}>
             <FaBars className={styles.burgerIcon} />
             <span>All</span>
           </li>

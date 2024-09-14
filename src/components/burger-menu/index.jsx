@@ -1,10 +1,18 @@
+import { useDispatch } from "react-redux";
+
+import { actionsModals } from "../../store/modalsSlice";
+
 import styles from "./style.module.css";
+
 import { CgChevronRight } from "react-icons/cg";
 
 function BurgerMenu() {
+  const dispatch = useDispatch();
   return (
     <div className={styles.container}>
-      {/* <div onClick={() => setBurgerMenu(false)}></div> */}
+      <div
+        onClick={() => dispatch(actionsModals.handlerBurgerMenu(false))}
+      ></div>
       <div className={styles.burgerMenu}>
         <div>
           <img src="/person.avif" alt="person" />

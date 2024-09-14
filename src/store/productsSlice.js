@@ -5,8 +5,6 @@ import { toast } from "react-toastify";
 const initialState = {
   products: [],
   cart: [],
-  inputSearchClick: false,
-  showModal: false,
 };
 
 export const getProducts = createAsyncThunk("api/products", async () => {
@@ -59,12 +57,6 @@ export const productsSlice = createSlice({
       toast.success("Remove from the cart", {
         position: "top-center",
       });
-    },
-    handlerInput: (state, action) => {
-      state.inputSearchClick = action.payload;
-    },
-    handlerShowModal: (state, action) => {
-      state.showModal = action.payload;
     },
   },
   extraReducers: (builder) => {

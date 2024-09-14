@@ -4,14 +4,14 @@
   height: 100%;
   z-index: 12;
 }
-/* .container > div:first-child {
+.container > div:first-child {
   background-color: #000;
   opacity: 0.6;
   width: 100%;
   height: 100vh;
   position: fixed;
   top: 0;
-} */
+}
 .burgerMenu {
   color: #121921;
   position: fixed;
