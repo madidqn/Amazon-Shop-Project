@@ -1,4 +1,5 @@
 import styles from "./Language.module.css";
+
 function Language() {
   return (
     <div className={styles.modalLanguage}>

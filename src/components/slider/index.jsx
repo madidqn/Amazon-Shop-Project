@@ -11,7 +11,6 @@ function Slide() {
   return (
     <div className={styles.slider}>
       <Swiper
-        // rewind={true}
         loop={true}
         autoplay={{
           delay: 2500,

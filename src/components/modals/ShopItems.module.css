@@ -1,0 +1,17 @@
+.modalShopItems {
+  position: absolute;
+  top: 110%;
+  background-color: white;
+  padding: 1rem 13px;
+  font-size: 14px;
+  border: 1px solid black;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.751);
+}
+.modalShopItems > a {
+  color: #166a85;
+  padding-left: 5px;
+}
+.modalShopItems > a:hover {
+  color: red;
+  text-decoration: underline;
+}

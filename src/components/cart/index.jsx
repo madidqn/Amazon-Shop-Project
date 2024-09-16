@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { actions } from "../../store/productsSlice";
+
+import { actions } from "./../../store/productsSlice";
 
 import styles from "./style.module.css";
 

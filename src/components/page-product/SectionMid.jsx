@@ -1,22 +1,37 @@
 import { useState, useRef, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+//custom hook
 import useProduct from "../../custom-hook/useProduct";
 
+//store
+import { actionsModals } from "../../store/modalsSlice";
+
+//components
+import Rating from "../modals/Rating";
+import ShopItems from "../modals/ShopItems";
+
+//style
 import styles from "./SectionMid.module.css";
 
+//icons
 import { BiMessageDetail } from "react-icons/bi";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 function SectionMid({ id }) {
-  const [filterProducts] = useProduct(id);
-
   const text1 = useRef(true);
   const text2 = useRef(true);
-
+  const [style, setStyle] = useState("");
   const [showList, setShowList] = useState(false);
   const [showParagraph, setShowParagraph] = useState(false);
-  const [showModalStars, setShowModalStars] = useState(false);
-  const [showModalShopItems, setShowModalShopItems] = useState(false);
-  const [style, setStyle] = useState("");
+
+  const { showModalStars, showModalShopItems } = useSelector(
+    (state) => state.modals
+  );
+
+  const dispatch = useDispatch();
+
+  const [filterProducts] = useProduct(id);
 
   function fixStyle(content) {
     setStyle(content);
@@ -36,8 +51,12 @@ function SectionMid({ id }) {
         </a>
         <div className={styles.rating}>
           <div
-            onMouseEnter={() => setShowModalStars(true)}
-            onMouseLeave={() => setShowModalStars(false)}
+            onMouseEnter={() =>
+              dispatch(actionsModals.handlerShowModalStars(true))
+            }
+            onMouseLeave={() =>
+              dispatch(actionsModals.handlerShowModalStars(false))
+            }
           >
             <div>
               <span>4.3</span>
@@ -45,61 +64,7 @@ function SectionMid({ id }) {
                 <img src={element} alt="star" key={index} />
               ))}
             </div>
-            {showModalStars && (
-              <div className={styles.modalStars}>
-                <div>
-                  {filterProducts[0]?.rating.map((element, index) => (
-                    <img src={element} alt="star" key={index} />
-                  ))}
-                  <span>4.3 out of 5</span>
-                </div>
-                <p>{filterProducts[0].voted_number} global ratings</p>
-                <ul>
-                  <li>
-                    <a href="#">4 star</a>
-                    <div>
-                      <span></span>
-                    </div>
-                    <a href="#">68%</a>
-                  </li>
-                  <li>
-                    <a href="#">4 star</a>
-                    <div>
-                      <span></span>
-                    </div>
-                    <a href="#">24%</a>
-                  </li>
-                  <li>
-                    <a href="#">3 star</a>
-                    <div>
-                      <span></span>
-                    </div>
-                    <a href="#">17%</a>
-                  </li>
-                  <li>
-                    <a href="#">2 star</a>
-                    <div>
-                      <span></span>
-                    </div>
-                    <a href="#">7%</a>
-                  </li>
-                  <li>
-                    <a href="#">2 star</a>
-                    <div>
-                      <span></span>
-                    </div>
-                    <a href="#">11%</a>
-                  </li>
-                  <li>
-                    <a href="#">1 star</a>
-                    <div>
-                      <span></span>
-                    </div>
-                    <a href="#">2%</a>
-                  </li>
-                </ul>
-              </div>
-            )}
+            {showModalStars && <Rating id={id} />}
           </div>
           <a href="#" className={styles.voted}>
             {filterProducts[0]?.voted_number} ranting
@@ -132,20 +97,19 @@ function SectionMid({ id }) {
         </p>
         <div
           className={styles.extraSavings}
-          onMouseEnter={() => setShowModalShopItems(true)}
-          onMouseLeave={() => setShowModalShopItems(false)}
+          onMouseEnter={() =>
+            dispatch(actionsModals.handlerShowModalShopItems(true))
+          }
+          onMouseLeave={() =>
+            dispatch(actionsModals.handlerShowModalShopItems(false))
+          }
         >
           <p>
             <span>Extra Savings</span> Amazon Music offer with this purchase 1
             Applicable Promotion
           </p>
           <IoIosArrowDown className={styles.iconDown} />
-          {showModalShopItems && (
-            <div>
-              Amazon Music offer with this purchase
-              <a href="#">Shop items</a>
-            </div>
-          )}
+          {showModalShopItems && <ShopItems />}
         </div>
       </div>
       <div>

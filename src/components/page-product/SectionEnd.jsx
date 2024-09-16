@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
+//custom hook
 import useProduct from "../../custom-hook/useProduct";
 
 //store
@@ -12,15 +14,14 @@ import styles from "./SectionEnd.module.css";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 function SectionEnd({ id }) {
-  const dispatch = useDispatch();
+  const btnAdd = useRef();
+  const [addItemCart, setAddItemCart] = useState();
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const [showSupport, setShowSupport] = useState(false);
 
   const { cart } = useSelector((state) => state.products);
 
-  const [addItemCart, setAddItemCart] = useState();
-  const [showSupport, setShowSupport] = useState(false);
-  const [selectedQuantity, setSelectedQuantity] = useState(1);
-
-  const btnAdd = useRef();
+  const dispatch = useDispatch();
 
   const [filterProducts] = useProduct(id);
 

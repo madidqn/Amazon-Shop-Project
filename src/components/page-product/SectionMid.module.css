@@ -40,76 +40,6 @@
   align-items: center;
   cursor: pointer;
 }
-.modalStars {
-  position: absolute;
-  top: 100%;
-  transform: translate(-20%, -3%);
-  background-color: white;
-  z-index: 1;
-  width: 350px;
-  padding: 10px;
-  border: 1px solid black;
-  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.751);
-}
-.modalStars > div {
-  padding-bottom: 10px;
-}
-.modalStars > div > span {
-  padding-left: 5px;
-}
-.modalStars > p {
-  font-size: 15px;
-}
-.modalStars > ul {
-  padding-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  row-gap: 5px;
-}
-.modalStars > ul > li {
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
-  cursor: pointer;
-}
-.modalStars > ul > li:hover > a {
-  text-decoration: underline;
-  color: red;
-}
-.modalStars > ul > li > a {
-  color: #509396;
-}
-.modalStars > ul > li > div {
-  width: 70%;
-  height: 25px;
-  background-color: transparent;
-  border-radius: 5px;
-  border: 1px solid black;
-}
-.modalStars > ul > li > div > span {
-  height: 99%;
-  display: inline-block;
-  background-color: orange;
-  border-radius: 5px;
-}
-.modalStars > ul > li:nth-child(1) > div > span {
-  width: 68%;
-}
-.modalStars > ul > li:nth-child(2) > div > span {
-  width: 24%;
-}
-.modalStars > ul > li:nth-child(3) > div > span {
-  width: 17%;
-}
-.modalStars > ul > li:nth-child(4) > div > span {
-  width: 7%;
-}
-.modalStars > ul > li:nth-child(5) > div > span {
-  width: 11%;
-}
-.modalStars > ul > li:nth-child(6) > div > span {
-  width: 2%;
-}
 .rating span:first-child {
   padding-right: 5px;
 }
@@ -190,23 +120,6 @@
   cursor: pointer;
   border-radius: 4px;
   font-size: 0.9rem;
-}
-.extraSavings > div {
-  position: absolute;
-  top: 120%;
-  background-color: white;
-  padding: 1rem 13px;
-  font-size: 14px;
-  border: 1px solid black;
-  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.751);
-}
-.extraSavings > div > a {
-  color: #166a85;
-  padding-left: 5px;
-}
-.extraSavings > div > a:hover {
-  color: red;
-  text-decoration: underline;
 }
 .aboutProduct > div:nth-child(2) > span {
   font-size: 12px;
