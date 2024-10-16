@@ -34,12 +34,11 @@ export const productsSlice = createSlice({
         return product.id === action.payload.id;
       });
       updatedProduct.quantity = Number(action.payload.selectedQuantity);
-      const filterCart = state.cart.filter((product) => {
-        product.id !== action.payload.id;
-      });
+      const filterCart = state.cart.filter(
+        (product) => product.id !== action.payload.id
+      );
       filterCart.push(updatedProduct);
-      console.log(filterCart);
-      // state.cart = filterCart;
+      state.cart = filterCart;
       toast.success("Update the product is successful!", {
         position: "top-center",
       });

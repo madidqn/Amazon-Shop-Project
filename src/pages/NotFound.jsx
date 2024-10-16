@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
+
+//style
 import styles from "./NotFound.module.css";
+
 function NotFound() {
   return (
     <div className={styles.notFound}>

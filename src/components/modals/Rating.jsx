@@ -1,9 +1,11 @@
 import useProduct from "../../custom-hook/useProduct";
 
+//style
 import styles from "./Rating.module.css";
 
 function Rating({ id }) {
   const [filterProducts] = useProduct(id);
+
   return (
     <div className={styles.modalStars}>
       <div>

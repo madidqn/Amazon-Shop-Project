@@ -116,7 +116,7 @@ function SectionMid({ id }) {
         <span>
           Style: <span>{style}</span>
         </span>
-        <div className={styles.R3}>
+        <div className={styles.style}>
           <button
             onClick={() => fixStyle(text1.current.innerText)}
             className={

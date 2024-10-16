@@ -1,31 +1,27 @@
 import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 
+//custom hook
+import useSelect from "./../../custom-hook/useSelect";
+
+// store
 import { actions } from "./../../store/productsSlice";
 
+//style
 import styles from "./style.module.css";
 
 function Product({ product }) {
-  const dispatch = useDispatch();
-
   const [selectedQuantity, setSelectedQuantity] = useState(1);
-
   const elemDelete = useRef();
 
-  function fixOptions() {
-    let values = [];
-    for (let i = 1; i <= 27; i++) {
-      values.push({ id: i - 1, value: i, label: `Quantity: ${i}` });
-    }
-    return values;
-  }
-  const options = fixOptions();
+  const dispatch = useDispatch();
+
+  const [options] = useSelect();
 
   function handlerOnChange(e) {
     elemDelete.current.innerHTML = "Update";
     setSelectedQuantity(e.target.value);
   }
-
   function handlerClickBtn() {
     if (elemDelete.current.innerHTML === "Update") {
       elemDelete.current.innerHTML = "Delete";
@@ -39,7 +35,6 @@ function Product({ product }) {
       dispatch(actions.deleteProduct(product.id));
     }
   }
-
   return (
     <div>
       <li key={product.id} className={styles.product}>

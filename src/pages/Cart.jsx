@@ -1,8 +1,13 @@
-import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+// custom hook
+import useTotal from "./../custom-hook/useTotal";
+
+//store
 import { actions } from "./../store/productsSlice";
 
-//component
+//components
 import Main from "../components/main";
 import Product from "../components/cart";
 
@@ -10,22 +15,11 @@ import Product from "../components/cart";
 import styles from "./Cart.module.css";
 
 function Cart() {
-  const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.products);
 
-  const numberOfProducts = () => {
-    return cart.reduce((initValue, curElem) => initValue + curElem.quantity, 0);
-  };
-  const quantity = numberOfProducts();
+  const dispatch = useDispatch();
 
-  const totolCost = () => {
-    return cart.reduce(
-      (initValue, curElem) =>
-        initValue + curElem.quantity * curElem.final_price,
-      0
-    );
-  };
-  const subtotal = totolCost();
+  const [quantity, subtotal] = useTotal();
 
   return (
     <Main>
@@ -39,7 +33,7 @@ function Cart() {
               </span>
               <ul>
                 {cart.map((product) => (
-                  <Product product={product} />
+                  <Product product={product} key={product.id} />
                 ))}
               </ul>
               <h3>
@@ -47,7 +41,7 @@ function Cart() {
                 <span>${subtotal}</span>
               </h3>
             </div>
-            <div className={styles.totol}>
+            <div className={styles.total}>
               <p> Subtotal ({quantity} item):</p>
               <h3>${subtotal}</h3>
               <div className={styles.gift}>

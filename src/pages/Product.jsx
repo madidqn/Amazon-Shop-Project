@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom";
+
+//custom hook
 import useProduct from "./../custom-hook/useProduct";
 
-// component
+// components
 import Main from "../components/main";
 import SectionMid from "../components/page-product/SectionMid";
 import SectionEnd from "../components/page-product/SectionEnd";
@@ -11,7 +13,9 @@ import styles from "./Product.module.css";
 
 function Product() {
   const { id } = useParams();
+
   const [filterProducts] = useProduct(id);
+
   return (
     <Main>
       <div className={styles.product}>

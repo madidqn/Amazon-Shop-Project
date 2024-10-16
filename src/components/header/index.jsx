@@ -1,9 +1,11 @@
 import { useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-// import Select from "react-select";
+import { useSelector, useDispatch } from "react-redux";
 
-// redux
+//custom hook
+import useTotal from "./../../custom-hook/useTotal";
+
+// store
 import { actionsModals } from "../../store/modalsSlice";
 
 //components
@@ -18,25 +20,15 @@ import styles from "./style.module.css";
 import { FaMapMarkerAlt, FaSearch, FaBars } from "react-icons/fa";
 
 function Header() {
-  const { cart } = useSelector((state) => state.products);
+  const form = useRef();
 
+  const { cart } = useSelector((state) => state.products);
   const { inputSearchClick, showModalLanguage, showModalAccount, burgerMenu } =
     useSelector((state) => state.modals);
 
   const dispatch = useDispatch();
 
-  // const options = [
-  //   { value: "all", label: "All" },
-  //   { value: "mobiles", label: "Mobiles" },
-  //   { value: "laptops", label: "Laptops" },
-  //   { value: "mobile accessories", label: "Mobile accessories" },
-  // ];
-
-  const totol = () => {
-    return cart.reduce((prev, curr) => prev + curr.quantity, 0);
-  };
-  const quantity = totol();
-  const form = useRef();
+  const [quantity] = useTotal();
 
   function clickInputBorder(e) {
     e.stopPropagation();
@@ -67,12 +59,6 @@ function Header() {
         </div>
         <div className={styles.inputSearch}>
           <form action="" ref={form}>
-            {/* <Select
-              value={selectedOption}
-              placeholder="All"
-              onChange={setSelectedOption}
-              options={options}
-            /> */}
             <select name="search" id="search">
               <option value="all">All</option>
               <option value="mobile">Mobile</option>

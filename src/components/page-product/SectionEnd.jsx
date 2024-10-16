@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-//custom hook
+//custom hooks
 import useProduct from "../../custom-hook/useProduct";
+import useTotal from "../../custom-hook/useTotal";
+import useSelect from "../../custom-hook/useSelect";
 
 //store
 import { actions } from "../../store/productsSlice";
@@ -24,24 +26,8 @@ function SectionEnd({ id }) {
   const dispatch = useDispatch();
 
   const [filterProducts] = useProduct(id);
-
-  function fixOptions() {
-    let values = [];
-    for (let i = 1; i <= 27; i++) {
-      values.push({ id: i - 1, value: i, label: `Quantity: ${i}` });
-    }
-    return values;
-  }
-  const options = fixOptions();
-
-  const totolCost = () => {
-    return cart.reduce(
-      (initValue, curElem) =>
-        initValue + curElem.quantity * curElem.final_price,
-      0
-    );
-  };
-  const subtotal = totolCost();
+  const [, subtotal] = useTotal();
+  const [options] = useSelect();
 
   function handlerOnChange(e) {
     if (addItemCart) {

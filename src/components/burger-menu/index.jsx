@@ -1,9 +1,12 @@
 import { useDispatch } from "react-redux";
 
+//store
 import { actionsModals } from "../../store/modalsSlice";
 
+//style
 import styles from "./style.module.css";
 
+//icon
 import { CgChevronRight } from "react-icons/cg";
 
 function BurgerMenu() {

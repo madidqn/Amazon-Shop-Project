@@ -236,14 +236,3 @@ input::placeholder {
   width: 40px;
   font-size: 20px;
 }
-/* ///// */
-.menuMusic {
-  color: #121921;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 17;
-  width: 25%;
-  height: 100%;
-  background-color: white;
-}

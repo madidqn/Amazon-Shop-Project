@@ -1,11 +1,13 @@
 import { useSelector } from "react-redux";
 
+//style
 import styles from "./style.module.css";
 
 function Main({ children }) {
   const { inputSearchClick, showModalLanguage, showModalAccount } = useSelector(
     (state) => state.modals
   );
+
   return (
     <div className={styles.containerMain}>
       <div

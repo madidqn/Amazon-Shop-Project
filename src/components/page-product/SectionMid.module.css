@@ -156,13 +156,13 @@
 .aboutProduct > div:nth-child(3) > span > span {
   font-weight: 700;
 }
-.R3 {
+.style {
   display: flex;
   align-items: center;
   column-gap: 7px;
   padding-bottom: 15px;
 }
-.R3 > button {
+.style > button {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -174,10 +174,10 @@
   font-size: 14px;
   cursor: pointer;
 }
-.R3 > button > span:first-child {
+.style > button > span:first-child {
   font-weight: 600;
 }
-.R3 > button > span:last-child {
+.style > button > span:last-child {
   color: #c25253;
   font-size: 13px;
 }
