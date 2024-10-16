@@ -1,19 +1,14 @@
 import { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 //custom hook
 import useProduct from "../../custom-hook/useProduct";
-
 //store
 import { actionsModals } from "../../store/modalsSlice";
-
 //components
 import Rating from "../modals/Rating";
 import ShopItems from "../modals/ShopItems";
-
 //style
 import styles from "./SectionMid.module.css";
-
 //icons
 import { BiMessageDetail } from "react-icons/bi";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";

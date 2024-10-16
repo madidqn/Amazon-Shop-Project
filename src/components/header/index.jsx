@@ -1,21 +1,16 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 //custom hook
 import useTotal from "./../../custom-hook/useTotal";
-
 // store
 import { actionsModals } from "../../store/modalsSlice";
-
 //components
 import Language from "../modals/Language";
 import Account from "../modals/Account";
 import BurgerMenu from "../burger-menu";
-
 //style
 import styles from "./style.module.css";
-
 //icons
 import { FaMapMarkerAlt, FaSearch, FaBars } from "react-icons/fa";
 

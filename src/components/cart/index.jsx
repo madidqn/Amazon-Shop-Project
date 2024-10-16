@@ -1,12 +1,9 @@
 import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-
 //custom hook
 import useSelect from "./../../custom-hook/useSelect";
-
 // store
 import { actions } from "./../../store/productsSlice";
-
 //style
 import styles from "./style.module.css";
 

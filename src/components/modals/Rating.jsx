@@ -1,5 +1,4 @@
 import useProduct from "../../custom-hook/useProduct";
-
 //style
 import styles from "./Rating.module.css";
 

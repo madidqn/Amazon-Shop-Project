@@ -1,17 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 //custom hooks
 import useProduct from "../../custom-hook/useProduct";
 import useTotal from "../../custom-hook/useTotal";
 import useSelect from "../../custom-hook/useSelect";
-
 //store
 import { actions } from "../../store/productsSlice";
-
 //style
 import styles from "./SectionEnd.module.css";
-
 //icon
 import { FaMapMarkerAlt } from "react-icons/fa";
 
@@ -37,7 +33,6 @@ function SectionEnd({ id }) {
       setSelectedQuantity(e.target.value);
     }
   }
-
   function handlerClickBtnAdd() {
     if (btnAdd.current.innerHTML === "Add to cart") {
       btnAdd.current.innerHTML = "Remove from cart";

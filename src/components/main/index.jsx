@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-
 //style
 import styles from "./style.module.css";
 

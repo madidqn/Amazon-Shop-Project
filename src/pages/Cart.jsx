@@ -1,16 +1,12 @@
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 // custom hook
 import useTotal from "./../custom-hook/useTotal";
-
 //store
 import { actions } from "./../store/productsSlice";
-
 //components
 import Main from "../components/main";
 import Product from "../components/cart";
-
 //style
 import styles from "./Cart.module.css";
 

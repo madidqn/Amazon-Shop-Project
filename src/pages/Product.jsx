@@ -1,13 +1,10 @@
 import { useParams } from "react-router-dom";
-
 //custom hook
 import useProduct from "./../custom-hook/useProduct";
-
 // components
 import Main from "../components/main";
 import SectionMid from "../components/page-product/SectionMid";
 import SectionEnd from "../components/page-product/SectionEnd";
-
 // style
 import styles from "./Product.module.css";
 

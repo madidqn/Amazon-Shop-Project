@@ -1,8 +1,6 @@
 import useData from "../../custom-hook/useData";
-
 //component
 import Product from "../product/index";
-
 //style
 import styles from "./style.module.css";
 
